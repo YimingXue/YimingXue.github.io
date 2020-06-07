@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://YimingXue.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://YimingXue.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <h1 id="pytorch使用记录">Pytorch使用记录</h1>
+<h2 id="pytorch数据处理">pytorch数据处理</h2>
+<h3 id="1-数据定义--torchvisiondatasets">1. 数据定义  torchvision.datasets</h3>
+<p>(Pytorch框架中有一个非常重要好用的包：torchvision，这个包主要由3个子包组成，分别是：torchvision.datasets, torchvision.models, torchvision.transforms)</p>
+<p>主要实现针对不同数据集的处理方法，用来加载数据和处理数据。类的实现需要继承父类==torch.utils.data.Dataset==，主要方法有两个：</p>
+<ul>
+<li>
+<p>_<em>init</em>_(self, root, train=True, transform=None, target_transform=None, download=False):</p>
+<p>该方法用来初始化类和对数据进行加载（有时需要定义一些开关来防止重复处理）。数据的加载就是针对不同的数据，把其data和label（分为训练数据和测试数据）读入内存中。</p>
+</li>
+<li>
+<p>_<em>getitem</em>_(self, index):</p>
+<p>该方法是把读入的输出传给Pytorch（迭代器的方式）</p>
+</li>
+</ul>
+<p>==至此，对数据进行加载，然后处理传给Pytorch已经完成，如果需要对自己的数据进行处理，也是通过修改和增加此部分完成。接下来需要队训练的数据进行处理，比如分批次的大小，随机处理等等。==</p>
+<h3 id="2-数据处理--torchvisiontransformcompose">2. 数据处理  torchvision.transform.Compose()</h3>
+<p>通过compose把一些对图像处理的方法集中起来</p>
+<h3 id="3-数据加载--torchutilsdatadataloader">3. 数据加载  torch.utils.data.DataLoader()</h3>
+<p>该接口定义在dataloader.py脚本中，只要是用PyTorch来训练模型基本都会用到该接口，该接口主要用来将自定义的数据读取接口的输出或者PyTorch已有的数据读取接口的输入按照batch size封装成Tensor，后续只需要再包装成Variable即可作为模型的输入，因此该接口有点承上启下的作用</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> __init__(self, dataset, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, shuffle<span style="color:#f92672">=</span>False, sampler<span style="color:#f92672">=</span>None,
+                 batch_sampler<span style="color:#f92672">=</span>None, num_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, collate_fn<span style="color:#f92672">=</span>default_collate,
+                 pin_memory<span style="color:#f92672">=</span>False, drop_last<span style="color:#f92672">=</span>False, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,
+                 worker_init_fn<span style="color:#f92672">=</span>None):
+</code></pre></div><ul>
+<li>dataset：这个就是PyTorch已有的数据读取接口（比如torchvision.datasets.ImageFolder）或者自定义的数据接口的输出，该输出要么是torch.utils.data.Dataset类的对象，要么是继承自torch.utils.data.Dataset类的自定义类的对象</li>
+<li>batch_size, shuffle, sampler</li>
+<li>batch_sampler：RandomSampler类表示随机采样且不重复，所以起到的就是shuffle的作用。BatchSampler类则是把batch size个RandomSampler类对象封装成一个，这样就实现了随机选取一个batch的目的</li>
+<li>num_workers：从注释可以看出这个参数必须大于等于0，0的话表示数据导入在主进程中进行，其他大于0的数表示通过多个进程来导入数据，可以加快数据导入速度</li>
+<li>collate_fn：用来处理不同情况下的输入dataset的封装，一般采用默认即可，除非你自定义的数据读取输出非常少见</li>
+<li>pin_memory：pin_memory (bool, optional): If True, the data loader will copy tensors into CUDA pinned memory before returning them. 也就是一个数据拷贝的问题</li>
+<li>drop_last, timeout, worker_init_fn</li>
+</ul>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://blog.csdn.net/gyguo95/article/details/78821520/">Pytorch处理并加载自己的数据</a></li>
+</ul>
+<h3 id="torchmultiprocessing模块">torch.multiprocessing模块</h3>
+<p>封装了<code>multiprocessing</code>模块，用于在相同数据的不同进程中共享视图。一旦张量或者存储被移动到共享单元（见<code>share_memory_()</code>），它可以不需要任何其他复制操作地发送到其他进程中。</p>
+<ul>
+<li><code>torch.multiprocessing.get_all_sharing_strategies()</code>返回一组由当前系统所支持的共享策略</li>
+<li><code>torch.multiprocessing.get_sharing_strategy()</code>返回当前策略共享CPU中的张量</li>
+<li><code>torch.multiprocessing.set_sharing_strategy(new_strategy)</code>设置共享CPU张量的策略，其中参数<code>new_strategy(str)</code>表示被选中策略的名字，它应该是<code>get_all_sharing_strategies()</code>中值当中的一个</li>
+</ul>
+<h3 id="torchmean函数">torch.mean()函数</h3>
+<p><code>torch.mean(x, dim=0, keepdim=True)</code>计算得到一个横向量</p>
+<h3 id="pytorch中激励函数softplus">Pytorch中激励函数softplus()</h3>
+<p>$softplus:g(z)=ln(1+e^z)$</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>linspace(<span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">200</span>)
+x <span style="color:#f92672">=</span> Variable(x)
+
+y_softplus <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>softplus(x)<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>numpy()
+</code></pre></div><h3 id="torchbackendscudnnbenchmark--true">torch.backends.cudnn.benchmark = True</h3>
+<p><code>torch.backends.cudnn.benchmark = True </code>在程序刚开始加这条语句可以提升一点训练速度，没什么额外开销</p>
+<h3 id="nnconv2d">nn.Conv2d()</h3>
+<p><code>class torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)</code></p>
+<h3 id="nncrossentropylossinput-target">nn.CrossEntropyLoss(input, target)</h3>
+<p>input类型为torch.cuda.FloatTensor，target类型为torch.cuda.LongTensor</p>
+<h3 id="modeltraintrue和modeleval">model.train(True)和model.eval()</h3>
+<p>这两个方法是针对在网络训练和测试时采用不同方式的情况，比如Batch Normalization和Dropout</p>
+<ul>
+<li>训练时是针对每个min-batch的，但是在测试中往往是针对单张图片，即不存在mini-batch的概念。由于网络训练完毕后参数都是固定的，因此每个批次的均值和方差都是不变的，因此直接结算所有batch的均值和方差。<strong>所有Batch Normalization的训练和测试时的操作不同</strong></li>
+<li>在训练中，每个隐层的神经元先乘概率P，然后在进行激活，在测试中，所有的神经元先进行激活，然后每个隐层神经元的输出乘P</li>
+</ul>
+<h3 id="torchgather">torch.gather()</h3>
+<p>gather()函数在多分类问题中，可以把最大值坐标作为index传进去，然后提取到每一行的正确预测结果。</p>
+<p><a href="https://blog.csdn.net/edogawachia/article/details/80515038">Pytorch中的torch.gather函数的含义</a></p>
+<h1 id="遇到问题记录">遇到问题记录</h1>
+<h4 id="runtimeerror-input-type-torchcudafloattensor-and-weight-type-torchdoubletensor-should-be-the-same">RuntimeError: Input type (torch.cuda.FloatTensor) and weight type (torch.DoubleTensor) should be the same</h4>
+<p>解决办法：将数据类型转换成FloatTensor即可，如下，加一行代码Tensor.type(torch.FloatTensor)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">train_label_batch <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>from_numpy(train_label_batch)
+train_label_batch <span style="color:#f92672">=</span> train_label_batch<span style="color:#f92672">.</span>type(torch<span style="color:#f92672">.</span>FloatTensor)  <span style="color:#75715e"># 转Float</span>
+train_label_batch <span style="color:#f92672">=</span> train_label_batch<span style="color:#f92672">.</span>cuda()  <span style="color:#75715e"># 转cuda</span>
+</code></pre></div>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

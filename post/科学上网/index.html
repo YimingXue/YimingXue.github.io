@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://YimingXue.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://YimingXue.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <h3 id="科学上网ing">科学上网ing</h3>
+<p><a href="https://goodtimevip.com/clientarea.php">小飞机官方网址</a></p>
+<p><a href="https://github.com/zhanzhangdaren/New-project">Gitup安装教程</a></p>
+<h3 id="linux科学上网指南">Linux科学上网指南</h3>
+<h4 id="一准备">一、准备</h4>
+<h5 id="shadowsocks-qt5">Shadowsocks-Qt5</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo add-apt-repository ppa:hzwhuang/ss-qt5
+sudo apt-get update
+sudo apt-get install shadowsocks-qt5
+</code></pre></div><p>Shadowsocks-Qt5下载完成后可通过gui-config.json导入链接，也可手动连接。</p>
+<h5 id="pip">pip</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sudo apt<span style="color:#f92672">-</span>get install python<span style="color:#f92672">-</span>pip python<span style="color:#f92672">-</span>dev build<span style="color:#f92672">-</span>essential
+sudo pip install <span style="color:#f92672">--</span>upgrade pip
+sudo pip install <span style="color:#f92672">--</span>upgrade virtualenv
+</code></pre></div><h5 id="genpac">GenPAC</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sudo pip install genpac
+sudo pip install <span style="color:#f92672">--</span>upgrade genpac
+</code></pre></div><p><em><strong>必须准备工作完成以后才能开始下面的事情哦~</strong></em></p>
+<p><strong>(1) 进入终端，Ctrl+Alt+T，cd到你希望生成文件存放的位置</strong>
+例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">cd <span style="color:#f92672">/</span>home<span style="color:#f92672">/</span>xueyiming<span style="color:#f92672">/</span>software
+</code></pre></div><p><strong>(2) 执行下面的语句</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sudo genpac <span style="color:#f92672">--</span>proxy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;SOCKS5 127.0.0.1:1080&#34;</span> <span style="color:#f92672">--</span>gfwlist<span style="color:#f92672">-</span>proxy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;SOCKS5 127.0.0.1:1080&#34;</span> <span style="color:#f92672">-</span>o autoproxy<span style="color:#f92672">.</span>pac <span style="color:#f92672">--</span>gfwlist<span style="color:#f92672">-</span>url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt&#34;</span>
+</code></pre></div><p><strong>注意</strong>：</p>
+<ul>
+<li>上面语句中127.0.0.1:1080应按照自己的情况填写。</li>
+<li>如果出现下面这种报错：</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fetch gfwlist fail<span style="color:#f92672">.</span> online: https:<span style="color:#f92672">//</span>raw<span style="color:#f92672">.</span>githubusercontent<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>gfwlist<span style="color:#f92672">/</span>gfwlist<span style="color:#f92672">/</span>master<span style="color:#f92672">/</span>gfwlist<span style="color:#f92672">.</span>txt local: None
+</code></pre></div><p>那么换成执行下面的语句：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sudo genpac <span style="color:#f92672">--</span>proxy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;SOCKS5 127.0.0.1:1080&#34;</span> <span style="color:#f92672">-</span>o autoproxy<span style="color:#f92672">.</span>pac <span style="color:#f92672">--</span>gfwlist<span style="color:#f92672">-</span>url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt&#34;</span>
+</code></pre></div><p>最后在Shadowsocks-Qt5中把小飞机中对应的信息填上即可</p>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

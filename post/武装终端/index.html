@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://YimingXue.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://YimingXue.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <h2 id="在ubuntu中使用zsh与oh-my-zsh">在ubuntu中使用zsh与oh-my-zsh</h2>
+<h3 id="安装和配置">安装和配置</h3>
+<ul>
+<li>查看ubuntu中默认安装了哪些shell</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /etc/shells
+</code></pre></div><ul>
+<li>查看当前正在运行的是哪个版本的shell</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo $SHELL
+</code></pre></div><ul>
+<li>安装zsh、git和wget</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install zsh git wget
+</code></pre></div><ul>
+<li>安装oh-my-zsh</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+</code></pre></div><ul>
+<li>替换bash为zsh并重启生效</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chsh -s /bin/zsh
+sudo reboot
+</code></pre></div><h3 id="使用手册">使用手册</h3>
+<p>oh-my-zsh的github项目在此：<a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>，<code>vim ~/.zshrc</code>可以查看oh-my-zsh的配置文件，主要可以修改两个参数：</p>
+<ul>
+<li><code>ZSH_THEME='ys'</code>，这个修改oh-my-zsh的主题</li>
+<li><code>plugins=(git last-working-dir extract z)</code>，这个为oh-my-zsh添加一些插件</li>
+</ul>
+<h3 id="常用操作">常用操作</h3>
+<ul>
+<li>转换路径时可以省去cd命令，直接输入路径即可</li>
+<li>输入d可以查看访问过的路径，然后输入数字就可以直接切换</li>
+<li>ctrl+L = clear = 清屏</li>
+<li>zsh_stats，查看使用频率前20的命令</li>
+<li>ctrl+u 清除一行的命令</li>
+</ul>
+<h3 id="添加插件">添加插件</h3>
+<ul>
+<li>
+<p>zsh-autosuggestions</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+plugins<span style="color:#f92672">=(</span>zsh-autosuggestions<span style="color:#f92672">)</span>
+vim ~/.zshrc <span style="color:#75715e"># 添加插件名字</span>
+source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zshrc
+</code></pre></div></li>
+<li>
+<p>参考资料</p>
+<ul>
+<li><a href="https://www.cnblogs.com/EasonJim/p/7863099.html">autojump and zsh-syntax-highlighting</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="终端分屏利器tmux">终端分屏利器Tmux</h2>
+<h3 id="安装和配置-1">安装和配置</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install tmux
+<span style="color:#75715e"># 启动Tmux</span>
+tmux
+<span style="color:#75715e"># 关闭Tmux</span>
+exit
+</code></pre></div><h3 id="重要概念">重要概念</h3>
+<p>tmux有三个基本概念：<strong>会话(Session)</strong>，<strong>窗口(Window)<strong>和</strong>面板(Pane)</strong>。当你输入tmux后， tmux实际做的事是首先创建一个会话(Session)，然后在这个会话中创建一个窗口，你可以继续创建多个窗口(Window)，每个窗口初始只包含一个面板，继续分屏后，会出现多个面板(Pane)，你在其中看到的终端实际上都属于tmux的某个面板。更进一步讲，Session可以包含多个Window，每个Window又可以包含多个Pane。</p>
+<h3 id="快捷键备忘录">快捷键备忘录</h3>
+<ul>
+<li>列出所有快捷键： <strong>c-b  ?</strong></li>
+<li>detach当前会话： <strong>c-b  d</strong>  （可通过<code>tmux attach</code>重新进入之前会话）</li>
+<li>选择并切换会话： <strong>c-b  s</strong></li>
+</ul>
+<h4 id="session操作">Session操作</h4>
+<ul>
+<li>创建一个新的session： <code>tmux new-s &lt;name-of-my-session&gt;</code></li>
+<li>在当前session中创建一个新的session，并保证之前的session依然存在： <strong>c-b</strong> 之后输入<code>new-s &lt;name-of-my-new-session&gt;</code></li>
+<li>进入名为test的session： <code>tmux attach -t test</code></li>
+</ul>
+<h4 id="window操作">Window操作</h4>
+<ul>
+<li>创建一个新的窗口： <strong>c-b  c</strong></li>
+<li>关闭当前窗口：  <strong>c-b  &amp;</strong></li>
+<li>列出所有的窗口选择：  <strong>c-b  w</strong></li>
+<li>切换到上一个窗口： <strong>c-b  p</strong></li>
+<li>切换到下一个窗口： <strong>c-b  n</strong></li>
+<li>使用窗口号切换窗口： <strong>c-b  窗口号</strong>（例如：1）</li>
+<li>重命名当前窗口： <strong>c-b  ,</strong></li>
+</ul>
+<h4 id="pane操作">Pane操作</h4>
+<ul>
+<li>横向分Terminal： <strong>c-b  %</strong></li>
+<li>纵向分Terminal： <strong>c-b  &ldquo;</strong></li>
+<li>自由选择面板： <strong>c-b  方向键</strong></li>
+<li>关闭当前pane： <strong>c-b  x</strong></li>
+<li>显示面板编号： <strong>c-b  q</strong></li>
+<li>列出所有会话： <strong>c-b  s</strong></li>
+<li>detach当前session： <strong>c-b  d</strong></li>
+</ul>
+<h4 id="基操">基操</h4>
+<ul>
+<li>
+<p>建立一个会话并且为其命名</p>
+<p><code>tmux new-session -s miforest</code></p>
+</li>
+<li>
+<p>建立一个会话并且同时指定这个会话中第一个窗口的名字</p>
+<p><code>tmux new-session -s miforest -n first</code></p>
+</li>
+<li>
+<p>重新attach一个session</p>
+<p><code>tmux attach -t work</code></p>
+</li>
+<li>
+<p>列出当前所有会话，在tmux中可以直接通过 <strong>c-b  s</strong> 列出会话</p>
+<p><code>tmux ls</code></p>
+</li>
+<li>
+<p>创建会话时可以加上-d选项表示不自动attach到这个新会话</p>
+<p><code>tmux new-session -s miforest -d</code></p>
+</li>
+<li>
+<p>关闭会话</p>
+<p><code>tmux kill-session -t miforest</code></p>
+</li>
+<li>
+<p>直接创建窗口</p>
+<p><code>tmux new-window -n first -t miforest</code></p>
+</li>
+<li>
+<p>在创建会话和窗口时指定要执行的命令</p>
+<p><code>tmux new-session -s miforest -n first -d &quot;ssh user@example.com&quot;</code></p>
+</li>
+<li>
+<p>指定会话[:窗口:面板]发送任意按钮</p>
+<p><code>tmux send-keys -t miforest:editor 'emacs' C-m</code></p>
+</li>
+</ul>
+<h3 id="ubuntu-tmux-启用鼠标滚轮">Ubuntu Tmux 启用鼠标滚轮</h3>
+<ul>
+<li>ctrl+b再按:，进入命令行模式，然后输入<code>set -g mouse on</code>，这种状态下复制黏贴文本都需要==按住shift==再进行操作</li>
+</ul>
+<p>参考资料：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/37042090">如何像黑客一样使用终端[视频]</a></p>
+<h2 id="查看cuda和cudnn版本">查看CUDA和CUDNN版本</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /usr/local/cuda/version.txt
+cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A <span style="color:#ae81ff">2</span>
+</code></pre></div><h2 id="spf13-vim使用">spf13-vim使用</h2>
+<h3 id="下载">下载</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl https://j.mp/spf13-vim3 -L &gt; spf13-vim.sh <span style="color:#f92672">&amp;&amp;</span> sh spf13-vim.sh
+</code></pre></div><h3 id="常用插件使用">常用插件使用</h3>
+<ul>
+<li>
+<p>Undotree</p>
+<ul>
+<li>
+<p>查看undo-tree</p>
+</li>
+<li>
+<p>启动方式 <code>&lt;leader&gt;u</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>NERDTree文件导航工具</p>
+<ul>
+<li>基本操作
+<table>
+<thead>
+<tr>
+<th align="center">key</th>
+<th align="center">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">ctrl+e</td>
+<td align="center">打开/关闭文件浏览器</td>
+</tr>
+<tr>
+<td align="center">o</td>
+<td align="center">小写字母o，打开文件或者展开目录</td>
+</tr>
+<tr>
+<td align="center">shift+c</td>
+<td align="center">即大写字母C，当前选中目录作为根目录</td>
+</tr>
+<tr>
+<td align="center">u</td>
+<td align="center">上一层目录作为根目录</td>
+</tr>
+<tr>
+<td align="center">:help NERDTree</td>
+<td align="center">NERDTree帮助手册</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>NERDCommenter注释工具</p>
+<ul>
+<li>基本操作
+<table>
+<thead>
+<tr>
+<th align="center">key</th>
+<th align="center">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">,cc</td>
+<td align="center">注释一行</td>
+</tr>
+<tr>
+<td align="center">,cu</td>
+<td align="center">取消注释一行</td>
+</tr>
+<tr>
+<td align="center">,cA</td>
+<td align="center">在行末追加注释，注释模式取决于<!-- raw HTML omitted -->ca</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>neocomplcache自动补全工具</p>
+<ul>
+<li>基本操作
+<table>
+<thead>
+<tr>
+<th align="center">key</th>
+<th align="center">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">ctrl+p 或 ctrl+n</td>
+<td align="center">在原始输入与补全方案间切换</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>Tagbar工具</p>
+<ul>
+<li>
+<p>使用前要先安装exuberant-ctags，执行命令<code>sudo apt-get install exuberant-ctags</code></p>
+</li>
+<li>
+<p>基本操作</p>
+<ul>
+<li>在你的项目根目录下运行，<code>ctags -R *</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">key</th>
+<th align="center">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">ctrl+]</td>
+<td align="center">转到定义处</td>
+</tr>
+<tr>
+<td align="center">ctrl+t</td>
+<td align="center">返回</td>
+</tr>
+<tr>
+<td align="center">,tt</td>
+<td align="center">打开关闭tagbar，显示当前文件函数列表，变量列表、属性等</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="参考资料">参考资料</h3>
+<ul>
+<li><a href="https://blog.csdn.net/bjarnecpp/article/details/80608706">spf13-vim常用快捷键、功能</a></li>
+</ul>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

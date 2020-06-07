@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://YimingXue.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://YimingXue.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <h2 id="sci撰写问题记录">SCI撰写问题记录</h2>
+<ul>
+<li>这里主要记录一下自己第一篇SCI在撰写过程中遇到的问题和相应的解决方法（说得好像我还会写第二篇一样）。</li>
+</ul>
+<h3 id="参考文献整理">参考文献整理</h3>
+<ul>
+<li>文献管理软件（Mendeley, EndNote），又大又全，自动化程度高，学习成本较低，如果你是用word写作推荐之。bibtex格式，自动化程度最高，不过style没有endnote那么全，学习成本较高，但基本可以一劳永逸，而且用LaTeX写很爽，如果你半辈子准备做科研，推荐之。</li>
+</ul>
+<h5 id="mendeley整理参考文献">Mendeley整理参考文献</h5>
+<ul>
+<li>具体流程参考<a href="https://blog.csdn.net/chaoshengze/article/details/73008914">使用文献管理软件Mendeley插入参考文献和引用</a>，舒服得鸭皮</li>
+</ul>
+<h5 id="在word中使用mendeley整理参考文献">在word中使用Mendeley整理参考文献</h5>
+<ul>
+<li>在Google上搜索论文，从<code>Get Citation</code>下载<code>RIS</code>格式引用</li>
+<li>将引用导入Mendeley</li>
+<li>在word中点击<code>Insert Citation</code>即可</li>
+</ul>
+<h3 id="latex介绍安装教程及基本使用">LaTeX介绍、安装教程及基本使用</h3>
+<ul>
+<li>
+<p>使用环境： Win10 64位, TeX Live 2018, TeXstudio</p>
+</li>
+<li>
+<p>LaTeX是一种基于TEX的排版系统。TEX在不同的硬件和操作系统上有不同的实现版本。这就像C语言，在不同的操作系统中有不同的编译系统，例如Linux下的gcc，Windows下的Visual C++等。有时一种操作系统里也会有好几种的TEX系统，常见的Unix/Linux下的TEX系统是teTEX，windows下则有MiKTEX和fpTEX。</p>
+</li>
+</ul>
+<h5 id="tex-live下载安装">TeX Live下载安装</h5>
+<ul>
+<li>TeX Live是TUG (TeX User Group)维护和发布的TeX系统，可以说是“官方”的TeX系统。推荐任何阶段的TeX用户，都尽可能使用TeX Live，以保持在跨操作系统平台、跨用户的一致性。下载地址为<a href="https://liam.page/texlive/">TeX Live 2018</a>，安装教程参考<a href="https://zhuanlan.zhihu.com/p/19779481?columnSlug=LaTeX">TeX Live 2014安装引导流程</a>，记得安装时右键<code>install-tl-advanced.bat</code>，以管理员权限执行。</li>
+</ul>
+<h5 id="texstudio下载安装">TeXstudio下载安装</h5>
+<ul>
+<li>免费软件官网下载即可，链接<a href="http://texstudio.sourceforge.net/">TeXstudio</a>。具体过程可参考<a href="https://www.cnblogs.com/dingruihfut/p/9690073.html">texlive2018和texstudio的安装及汉化教程</a></li>
+</ul>
+<h5 id="ctex下载安装没用到">CTeX下载安装（没用到）</h5>
+<ul>
+<li>CTeX指的是CTeX中文套装的简称，是把MiKTEX和一些常用的相关工具，如GSview，WinEdt等包装在一起制作的一个简易安装程序，并对其中的中文支持部分进行了配置，使得安装后马上就可以使用中文。</li>
+</ul>
+<h5 id="winedt-103下载安装注册激活没用到">WinEdt 10.3下载安装、注册激活（没用到）</h5>
+<ul>
+<li>上面CTeX安装时会清除系统环境变量，令我忙活了大半天，找到win10自带的系统变量，然后重启才能下载WinEdt。下载地址为<a href="http://www.winedt.com/download.html">WinEdt 10.3</a>，选择WinEdt 10.3 (64-bit) [Build: 20180507] (winedt103-64.exe 9.2 MB)下载，安装完成，运行WinEdt，打开Help &raquo; Register WinEdt… 在弹出的对话框里包含Name,Code,Date。对应填入以下信息即可，轻松愉悦。</li>
+</ul>
+<pre><code>Name：Cracker TeCHiScy
+Code：1130140925535334280
+Date：不用填
+</code></pre><p>参考资料：</p>
+<p><a href="https://blog.csdn.net/muzhicihe/article/details/80326090">LaTeX的下载安装及简易使用</a></p>
+<h3 id="latex入门教程">LaTeX入门教程</h3>
+<h5 id="宏包">宏包</h5>
+<ul>
+<li><code>\package{}</code>就是在调用宏包。每一个宏包里都定义了一些专门的命令，通过这些命令可以实现对于一类对象（如数学公式等）的统一排版（如字号字形），或用来实现一些功能（如插入图片或制作复杂表格）。 通常在<code>\documentclass</code>之后，在<code>\begin{document}</code>之前，将文章所需要涉及的宏包都罗列上。常用的宏包有:</li>
+</ul>
+<pre><code>\usepackage{amsmath}
+\usepackage{amssymb} % 编辑数学公式的宏包
+\usepackage{amsthm} % 编辑数学定理和证明过程的宏包
+\usepackage{graphicx} % 插入图片的宏包
+\usepackage{multirow} % 复杂表格的宏包
+</code></pre><h5 id="模板">模板</h5>
+<ul>
+<li>模板就是在<code>\documentclass{}</code>后面的大括号里的内容。一个模板可以规定，section这个层级都用什么字体什么字号怎么对齐，subsection这个层级用什么字体什么字号怎么对齐，paragraph又用什么字体什么字号怎么对齐。 当然模板里还可以包含一些自定义的口令，以及页眉页脚页边距一类的页面设置。</li>
+<li>关于模板的使用，参照<a href="https://zhuanlan.zhihu.com/p/25072338">LaTeX 番外0：模板的使用</a>，相应的有视频资料（还是B站上的哦）<a href="https://www.bilibili.com/video/av16046466/">【教程-15分钟速通LaTeX】</a>。</li>
+</ul>
+<h5 id="latex插入公式">LaTeX插入公式</h5>
+<ul>
+<li>
+<p>单行公式带编号</p>
+<pre><code>\usepackage{hyperref} % 为了添加公式自动引用，导入hyperref宏包，使用命令\autoref
+  
+\begin{equation}\label{eq.rms}
+    % ^, \hat
+    % 根号, \sqrt{}
+    % 分数, \frac{}{}
+\end{equation}
+  
+\autoref{eq.rms} give us ....
+</code></pre></li>
+<li>
+<p>多行公式</p>
+<pre><code>\usepackage{hyperref} % 为了添加公式自动引用，导入hyperref宏包，使用命令\autoref
+\usepackage{amsmath}
+  
+\begin{equation}\label{eq.rms}
+    \bengin{split}
+         x = &amp;a + b + c + \\ % &amp;符号用于强制对齐，\\符号强制换行
+         &amp;d + e
+    \end{split}
+\end{equation}
+</code></pre></li>
+</ul>
+<h5 id="latex插入图片">LaTeX插入图片</h5>
+<ul>
+<li>
+<p>单列图片</p>
+<pre><code>\usepackage{graphicx} % 插入图片的宏包
+\usepackage{hyperref}
+  
+\begin{figure}[htpb] % htpb是一组图片格式设定
+    \centering
+    \includegraphics[width=6cm]{fig/linuxStructure} % 图片相对于主tex源文件的路径，文
+                                                      件后缀名不是必要的
+    \caption{Diagram of the linux system structure.} % 图片标题、说明
+    \label{fig.linux}
+\end{figure}
+</code></pre></li>
+<li>
+<p>跨列图片</p>
+<pre><code>\usepackage{graphicx} % 插入图片的宏包
+\usepackage{hyperref}
+  
+\begin{figure*}[htpb]
+    \centering
+    \includegraphics[width=6cm]{fig/linuxStructure}
+    \caption{Diagram of the linux system structure.}
+    \label{fig.linux}
+\end{figure*}
+</code></pre></li>
+<li>
+<p>作者简介插入照片</p>
+<pre><code>\usepackage{graphicx} % 插入图片的宏包
+\usepackage{hyperref}
+  
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspecttratip]{图片路径}}]{Vigor Zhang}
+</code></pre></li>
+</ul>
+<h5 id="latex插入表格">LaTeX插入表格</h5>
+<p>使用]<a href="http://www.tablesgenerator.com/">LaTeX表格生成在线工具</a>，然后复制到TeXstudio中即可。记得[]中添加htpb</p>
+<ul>
+<li>
+<p><a href="https://blog.csdn.net/wbl90/article/details/52597429">Latex 表格过大(或过小)的调整方法</a></p>
+<ul>
+<li>表格宽过窄
+<ul>
+<li>目标：调整表格宽度，效果为“按页面宽度调整表格”</li>
+<li>命令：<code>\setlength{\tabcolsep}{7mm}{\begin{tabular}...}</code></li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#66d9ef">\begin</span>{center}
+<span style="color:#66d9ef">\textbf</span>{Table 2}~~Improved table.<span style="color:#66d9ef">\\</span>
+<span style="color:#66d9ef">\setlength</span>{<span style="color:#66d9ef">\tabcolsep</span>}{7mm}{
+<span style="color:#66d9ef">\begin</span>{tabular}{cccccc} <span style="color:#66d9ef">\toprule</span>
+Models  &amp;  <span style="color:#e6db74">$</span>\hat c<span style="color:#e6db74">$</span>  &amp;  <span style="color:#e6db74">$</span>\hat\alpha<span style="color:#e6db74">$</span>  &amp;  <span style="color:#e6db74">$</span>\hat\beta_<span style="color:#ae81ff">0</span><span style="color:#e6db74">$</span>  &amp;  <span style="color:#e6db74">$</span>\hat\beta_<span style="color:#ae81ff">1</span><span style="color:#e6db74">$</span>  &amp;  <span style="color:#e6db74">$</span>\hat\beta_<span style="color:#ae81ff">2</span><span style="color:#e6db74">$</span>  <span style="color:#66d9ef">\\</span> <span style="color:#66d9ef">\hline</span>
+model  &amp; 30.6302  &amp; 0.4127  &amp; 9.4257  &amp; - &amp; - <span style="color:#66d9ef">\\</span>
+model  &amp; 12.4089  &amp; 0.5169  &amp; 18.6986  &amp; -6.6157  &amp; - <span style="color:#66d9ef">\\</span>
+model  &amp; 14.8586  &amp; 0.4991  &amp; 19.5421  &amp; -7.0717  &amp; 0.2183  <span style="color:#66d9ef">\\</span>
+model  &amp; 3.06302  &amp; 0.41266  &amp; 0.11725  &amp; - &amp; - <span style="color:#66d9ef">\\</span>
+model  &amp; 1.24089  &amp; 0.51691  &amp; 0.83605  &amp; -0.66157  &amp; - <span style="color:#66d9ef">\\</span>
+model  &amp; 1.48586  &amp; 0.49906  &amp; 0.95609  &amp; -0.70717  &amp; 0.02183  <span style="color:#66d9ef">\\</span>
+<span style="color:#66d9ef">\bottomrule</span>
+<span style="color:#66d9ef">\end</span>{tabular}}
+<span style="color:#66d9ef">\end</span>{center}
+</code></pre></div><ul>
+<li>
+<p>表格宽过宽</p>
+<ul>
+<li>目标：调整表格宽度，效果为“按内容调整表格”</li>
+<li>命令：<code>\resizebox{\texwidth}{15mm}{\begin{tabular}...}</code></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#66d9ef">\begin</span>{center}
+<span style="color:#66d9ef">\textbf</span>{Table 1}~~Original table.<span style="color:#66d9ef">\\</span>
+<span style="color:#66d9ef">\resizebox</span>{<span style="color:#66d9ef">\textwidth</span>}{15mm}{
+<span style="color:#66d9ef">\begin</span>{tabular}{cccccccccccc} <span style="color:#66d9ef">\toprule</span>
+Models  &amp;  <span style="color:#e6db74">$</span>\hat c<span style="color:#e6db74">$</span>  &amp;  <span style="color:#e6db74">$</span>\hat\alpha<span style="color:#e6db74">$</span>  &amp;  <span style="color:#e6db74">$</span>\hat\beta_<span style="color:#ae81ff">0</span><span style="color:#e6db74">$</span>  &amp;  <span style="color:#e6db74">$</span>\hat\beta_<span style="color:#ae81ff">1</span><span style="color:#e6db74">$</span>  &amp;  <span style="color:#e6db74">$</span>\hat\beta_<span style="color:#ae81ff">2</span><span style="color:#e6db74">$</span> &amp; Models  &amp;  <span style="color:#e6db74">$</span>\hat c<span style="color:#e6db74">$</span>  &amp;  <span style="color:#e6db74">$</span>\hat\alpha<span style="color:#e6db74">$</span>  &amp;  <span style="color:#e6db74">$</span>\hat\beta_<span style="color:#ae81ff">0</span><span style="color:#e6db74">$</span>  &amp;  <span style="color:#e6db74">$</span>\hat\beta_<span style="color:#ae81ff">1</span><span style="color:#e6db74">$</span>  &amp;  <span style="color:#e6db74">$</span>\hat\beta_<span style="color:#ae81ff">2</span><span style="color:#e6db74">$</span>  <span style="color:#66d9ef">\\</span> <span style="color:#66d9ef">\hline</span>
+model  &amp; 30.6302  &amp; 0.4127  &amp; 9.4257  &amp; - &amp; -  &amp; model  &amp; 30.6302  &amp; 0.4127  &amp; 9.4257  &amp; - &amp; -<span style="color:#66d9ef">\\</span>
+model  &amp; 12.4089  &amp; 0.5169  &amp; 18.6986  &amp; -6.6157  &amp; - &amp; model  &amp; 30.6302  &amp; 0.4127  &amp; 9.4257  &amp; - &amp; - <span style="color:#66d9ef">\\</span>
+model  &amp; 14.8586  &amp; 0.4991  &amp; 19.5421  &amp; -7.0717  &amp; 0.2183 &amp; model  &amp; 30.6302  &amp; 0.4127  &amp; 9.4257  &amp; - &amp; - <span style="color:#66d9ef">\\</span>
+model  &amp; 3.06302  &amp; 0.41266  &amp; 0.11725  &amp; - &amp; - &amp; model  &amp; 30.6302  &amp; 0.4127  &amp; 9.4257  &amp; - &amp; - <span style="color:#66d9ef">\\</span>
+model  &amp; 1.24089  &amp; 0.51691  &amp; 0.83605  &amp; -0.66157  &amp; - &amp; model  &amp; 30.6302  &amp; 0.4127  &amp; 9.4257  &amp; - &amp; - <span style="color:#66d9ef">\\</span>
+model  &amp; 1.48586  &amp; 0.49906  &amp; 0.95609  &amp; -0.70717  &amp; 0.02183  &amp; model  &amp; 30.6302  &amp; 0.4127  &amp; 9.4257  &amp; - &amp; - <span style="color:#66d9ef">\\</span>
+<span style="color:#66d9ef">\bottomrule</span>
+<span style="color:#66d9ef">\end</span>{tabular}}
+<span style="color:#66d9ef">\end</span>{center}
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><a href="https://www.zhihu.com/question/288695777/answer/462924502">latex表格字上下垂直居中</a></p>
+<ul>
+<li><code>\renewcommand{\arrarstretch}{&lt;number&gt;} % default is 1.0</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="latex插入参考文献">LaTeX插入参考文献</h5>
+<p>使用BiBTeX来管理和添加引用文献列表，通过Google Scholar搜索文献，便很容易找到bib格式的文献引用条目，将条目添加到.bib文件中，在.tex文件的正文撰写中就可以很方便地引用，引用过的条目会自动按顺序出现在参考文献列表。</p>
+<pre><code>% 在设定区域会如此引用natbib这个包，可以对引用文献的序号表示进行压缩。
+% 例如：[1],[2],[3],[4]变为[1-4]
+\usepackage[numbers,sort&amp;compress]{natbib} % for cite number compression
+</code></pre><pre><code>\fi % 表示
+
+% 在这个位置引用bib文件，第一行是文献列表样式设定，第二行是引用文件名
+\bibliographystyle{IEEEtran}
+\bibliography{citationlist}
+</code></pre><pre><code>In \cite{文献索引标志/缩写名}, the author mentioned ... % 文内引用
+
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}} # for upcite
+... very good performance. \upcite{文献索引标志/缩写名} % 右上方引用
+</code></pre><h5 id="其他">其他</h5>
+<ul>
+<li><code>~</code>：小空白</li>
+<li><code>~~</code>：大空白</li>
+<li><code>\par</code>：换行，相当于<code>\\</code></li>
+<li><code>\hfill</code>：填充空白</li>
+</ul>
+<p>参考资料：</p>
+<p><a href="https://blog.csdn.net/u014803202/article/details/50410748">一篇实用的Latex的入门教程</a></p>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

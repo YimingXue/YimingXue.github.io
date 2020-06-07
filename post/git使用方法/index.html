@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://YimingXue.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://YimingXue.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <p>注：以下的操作都是在linux系统上进行的</p>
+<h4 id="1注册github账户以及创建仓库"><strong>1、注册github账户以及创建仓库</strong></h4>
+<h4 id="2安装git"><strong>2、安装Git</strong></h4>
+<ul>
+<li>打开控制台，然后通过包管理安装，在Ubuntu上输入命令</li>
+</ul>
+<pre><code>sudo apt-get install git-all
+</code></pre><h4 id="3配置git"><strong>3、配置Git</strong></h4>
+<h5 id="1本地创建ssh-key"><strong>（1）本地创建ssh key</strong></h5>
+<ul>
+<li>以下代码中your_email为你的邮箱，即你在github上注册的那个邮箱。之后一路回车，最后会在会在默认文件id_rsa上生成ssh key。打开id_rsa.pub，复制里面的key，然后回到github网站的settings，选择SSH Keys，Add SSH Key，title随便填，粘贴key，然后点击 Add key 按钮。</li>
+</ul>
+<pre><code>ssh-keygen -t rsa -C “your_email”
+</code></pre><h5 id="2验证是否连接成功-">**（2）验证是否连接成功 **</h5>
+<ul>
+<li>输入以下命令验证是否连接成功，如果成功连接github会看到以下结果：</li>
+</ul>
+<pre><code>ssh -T git@github.com
+You’ve successfully authenticated, but GitHub does not provide shell access 
+</code></pre><h5 id="3配置用户的用户名和email这些内容会出现在你的每一个提交commit里面"><strong>（3）配置用户的用户名和email</strong>（这些内容会出现在你的每一个提交（commit）里面）</h5>
+<ul>
+<li>Git配置信息分为<strong>全局</strong>和<strong>项目</strong>两种，以下带“–global”参数的命令是全局配置，它会影响本机上的每一个Git项目。</li>
+</ul>
+<pre><code>git config --global user.name &quot;xueyiming&quot;
+git config --global user.email &quot;xueyimingshdx@126.com&quot;
+</code></pre><ul>
+<li>Git也可以为每个项目设定不同的配置信息，在命令行环境，进入Git项目所在目录，执行下面的命令（这个命令要在下面git init之后执行，否则没有.git文件夹）</li>
+</ul>
+<pre><code> git config user.name &quot;your xueyiming&quot;
+ git config user.email &quot;xueyimingshdx@126.com&quot;
+</code></pre><ul>
+<li>Git的<strong>全局配置文件</strong>是存放在”~/.gitconfig”（用户目录下的.gitconfig）文件中，我们用cat、head命令查看全局配置信息文件 。（如果对于Git熟悉后，可以直修改”~/.gitconfig”,”.git/config”这两个文件进行配置）</li>
+</ul>
+<h4 id="4上传项目代码到github---本地操作"><strong>4、上传项目代码到github - 本地操作</strong></h4>
+<h5 id="1创建新仓库---git-init"><strong>（1）创建新仓库 - git init</strong></h5>
+<ul>
+<li>git 会把所有文件以及历史记录保存在你的项目中，创建一个新的仓库，首先要去到项目路径，执行 git init。然后git会创建一个隐藏的文件夹.git，所有的信息都储存在其中。</li>
+</ul>
+<pre><code>cd your/path
+git init
+</code></pre><h5 id="2检查状态---git-status-">**（2）检查状态 - git status **</h5>
+<ul>
+<li>git status 是另一个非常重要的命令，它会告诉我们创库的当前状态：是否为最新代码，有什么更新等等。（Untracked files是指尚未追踪的文件）</li>
+</ul>
+<pre><code>duchenting@server005-W560-G20:~/dct/xueyiming$ git status
+On branch master
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+	.gitignore
+	new.log
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</code></pre><h5 id="3工作流说明-">**（3）工作流说明 **</h5>
+<ul>
+<li>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的<strong>工作目录</strong>，它持有实际文件；第二个是<strong>缓存区（Index）</strong>，它像个缓存区域，临时保存你的改动；最后是<strong>HEAD</strong>，指向你最近一次提交后的结果。
+<img src="http://ww1.sinaimg.cn/large/d562a815ly1flbjpsjs8ej20n809cjru.jpg" alt=""></li>
+</ul>
+<h5 id="4暂存---git-add"><strong>（4）暂存 - git add</strong></h5>
+<ul>
+<li>git 有个概念叫<strong>缓存区</strong>，你可以把它看成一块空白帆布，包裹着所有你可能会提交的变动。它一开始为空，你可以通过 git add 命令添加内容，并使用 git commit 提交。</li>
+</ul>
+<pre><code>git add new.log
+git add .ignore
+</code></pre><ul>
+<li>如果要暂存当前目录下的所有内容。</li>
+</ul>
+<pre><code>git add -A
+</code></pre><ul>
+<li>再次使用git status查看。我们的文件已经提交了，状态信息还会告诉我们暂存区文件发生了什么变动，不过这里我们提交的是两个全新文件。</li>
+</ul>
+<pre><code>duchenting@server005-W560-G20:~/dct/xueyiming$ git status
+On branch master
+Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+
+	new file:   .gitignore
+	new file:   new.log
+</code></pre><h5 id="5提交---git-commit"><strong>（5）提交 - git commit</strong></h5>
+<ul>
+<li>一次提交代表着我们的仓库到了一个交付状态，通常是完成了某一块小功能。它就像是一个快照，允许我们像使用时光机一样回到旧时光。创建提交，需要我们首先提交东西到暂存区（git add），之后执行：</li>
+</ul>
+<pre><code>git commit -m &quot;initial commit&quot;
+</code></pre><ul>
+<li>这就创建了一次提交，-m “Initial commit.”表示对这次提交的描述，建议使用有意义的描述性信息。现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</li>
+</ul>
+<h4 id="5上传项目代码到github---远端仓库操作"><strong>5、上传项目代码到github - 远端仓库操作</strong></h4>
+<h5 id="1远端仓库说明"><strong>（1）远端仓库说明</strong></h5>
+<ul>
+<li>到目前为止，我们的操作都是在本地的，它存在于.git文件中。为了能够协同开发，我们需要把代码发布到远端仓库上。</li>
+</ul>
+<h5 id="2链接远端仓库---git-remote-add"><strong>（2）链接远端仓库 - git remote add</strong></h5>
+<ul>
+<li>为了能够上传到远端仓库，我们需要先建立起链接，远端仓库地址使用自己的即可。一个项目可以同时拥有好几个远端仓库为了能够区分，通常会起不同的名字。通常主远端仓库被称为origin。</li>
+</ul>
+<pre><code>git remote add origin https://github.com/BeginAgainX/Test.git
+</code></pre><h5 id="3上传到远端仓库---git-push"><strong>（3）上传到远端仓库 - git push</strong></h5>
+<ul>
+<li>git push命令会有两个参数，远端仓库的名字，以及分支的名字（这里可以把 master 换成你想要推送的任何分支）</li>
+</ul>
+<pre><code>git push origin master
+</code></pre><h5 id="4克隆仓库---git-clone"><strong>（4）克隆仓库 - git clone</strong></h5>
+<ul>
+<li>放在Github上的开源项目，人们可以看到你的代码。可以使用 git clone进行下载到本地。本地也会创建一个新的仓库，并自动将github上的分支设为远端分支。</li>
+</ul>
+<pre><code>git clone https://github.com/BeginAgainX/Test.git
+</code></pre><h5 id="5从服务器上拉取代码---git-pull"><strong>（5）从服务器上拉取代码 - git pull</strong></h5>
+<ul>
+<li>如果你更新了代码到仓库上，其他人可以通过git pull命令拉取你的变动.</li>
+</ul>
+<pre><code>git pull origin master
+</code></pre><h4 id="6分支"><strong>6、分支</strong></h4>
+<h5 id="1分支简介"><strong>（1）分支简介</strong></h5>
+<ul>
+<li>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上。这样做的原因是：</li>
+</ul>
+<blockquote>
+<ul>
+<li>稳定版本的代码不会被破坏</li>
+<li>不同的功能可以由不同开发者同时开发</li>
+<li>开发者可以专注于自己的分支，不用担心被其他人破坏了环境</li>
+<li>在不确定之前，同一个特性可以拥有几个版本，便于比较</li>
+</ul>
+</blockquote>
+<p><img src="http://ww1.sinaimg.cn/large/d562a815ly1flco8fvj1jj20or089t92.jpg" alt=""></p>
+<h5 id="2创建新分支---git-branch"><strong>（2）创建新分支 - git branch</strong></h5>
+<ul>
+<li>每一个仓库的默认分支都叫master, 创建新分支可以这样：</li>
+</ul>
+<pre><code>git branch feature_x
+</code></pre><h5 id="3切换分支---git-checkout"><strong>（3）切换分支 - git checkout</strong></h5>
+<ul>
+<li>单独使用git branch，可以查看分支状态：</li>
+</ul>
+<pre><code>git branch
+</code></pre><ul>
+<li>*号表示当前活跃分支为master，使用git checkout切换分支.</li>
+</ul>
+<pre><code>git checkout feature_x
+</code></pre><h5 id="4合并分支---git-merge"><strong>（4）合并分支 - git merge</strong></h5>
+<ul>
+<li>我们的 feature_x 分支的任务是增加一个featuer.txt。我们来创建，添加到暂存区，提交。</li>
+</ul>
+<pre><code>git add feature.txt
+git commit -m &quot;New feature complete.&quot;
+</code></pre><ul>
+<li>新分支任务完成了，回到master分支。</li>
+</ul>
+<pre><code>git checkout master
+</code></pre><ul>
+<li>现在去查看文件，你会发现，之前创建的feature.txt文件不见了，因为master分支上并没有feature.txt。使用git merge 把 amazing_new_feature 分支合并到master上。</li>
+</ul>
+<pre><code>git merge amazing_new_feature
+git commit -m &quot;New feature complete.&quot;
+</code></pre><ul>
+<li>然后再把amazing_new_feature 分支删掉。</li>
+</ul>
+<pre><code>git branch -d feature_x
+</code></pre><h4 id="7-git拉取远程代码">7. git拉取远程代码</h4>
+<ol>
+<li>拉取远程代码，<code>git clone 远端仓库链接</code></li>
+<li>查看本地分支和远程分支，<code>git branch-al</code></li>
+<li>将远程分支和本地分支进行关联，<code>git pull origin master</code>
+<ul>
+<li>如果想拉到本地dev分支上，首先<code>git checkout -b dev</code>，然后使用<code>git pull origin dev</code>，这样就将本地dev分支与远程origin/dev相绑定了</li>
+<li>如果远程分支origin下还有分支1.0.0.1，则使用<code>git pull origin/1.0.0.1 master</code>，这样就是将本地的master分支与远程的origin/1.0.0.1进行了绑定</li>
+<li><code>git branch -vv</code>，查看本地分支与远程分支之间绑定关系</li>
+</ul>
+</li>
+<li>上传本地代码到远程分支上，<code>git add</code>, <code>git commit</code>, <code>git push</code></li>
+</ol>
+<h4 id="8-解决git-pullpush每次都需要输入密码">8. 解决git pull/push每次都需要输入密码</h4>
+<p><code>git config --global credential.helper store</code></p>
+<h4 id="参考内容"><strong>参考内容</strong></h4>
+<p><a href="http://www.voidcn.com/article/p-sszzeabl-bat.html">使用Git上传项目代码到github</a>
+<a href="https://mp.weixin.qq.com/s?__biz=MzAxODI5ODMwOA==&amp;mid=2666539259&amp;idx=1&amp;sn=b139740a5d2c1fea22d2f1087eb01761&amp;scene=2&amp;srcid=06298zkT5e0P6jWl9VVE9inj&amp;from=timeline&amp;isappinstalled=0#wechat_redirect">30 分钟 git 命令入门到放弃</a>
+<a href="http://www.jianshu.com/p/61e38fe6d571">为你的仓库自动创建.gitignore</a>
+<a href="http://blog.csdn.net/weixin_36401046/article/details/52954408">如何创建.gitignore文件，忽略git不必要提交的文件</a>
+<a href="http://blog.csdn.net/limm33/article/details/50916973">github如何删除一个repository(仓库)</a>
+<a href="http://www.bootcss.com/p/git-guide/">git - 简易指南</a></p>
+<h4 id="常见问题解决方法"><strong>常见问题解决方法</strong></h4>
+<p><a href="http://blog.csdn.net/top_code/article/details/50381432">Git 提示fatal: remote origin already exists 错误解决办法</a>
+<a href="https://www.cnblogs.com/kevingrace/p/6259905.html">执行git push出现&quot;Everything up-to-date&rdquo;
+</a></p>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

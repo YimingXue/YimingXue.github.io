@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://YimingXue.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://YimingXue.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <h4 id="混合像元解混">混合像元解混</h4>
+<ul>
+<li>端元提取
+<ul>
+<li>从图像中抽取或计算出端元的过程称为端元提取</li>
+</ul>
+</li>
+<li>丰度解混
+<ul>
+<li>求解各个端元对应丰度值的过程称为丰度估计</li>
+</ul>
+</li>
+<li>光谱混合模型是建立在线性混合的假设基础上进行的</li>
+</ul>
+<h4 id="高光谱图像处理之---亚像素目标检测">高光谱图像处理之   亚像素目标检测</h4>
+<p>准备内容：研究背景1分钟，现状1分钟（只讲总结性的结论），目前存在的问题（2分钟），研究的创新点（4分钟），实验设计（7分）说清楚。</p>
+<h5 id="研究背景">研究背景</h5>
+<p>课题研究的是高光谱图像处理中的亚像素目标检测问题。</p>
+<h5 id="研究现状">研究现状</h5>
+<ul>
+<li>基于二阶或高阶统计量的算法，CME算法、ACE算法
+<ul>
+<li>CEM算法主要思想是设计一个FIR线性滤波器，使得在满足约束条件式的情况下滤波器的输出能量最小。</li>
+</ul>
+</li>
+</ul>
+<h5 id="目前存在的问题">目前存在的问题</h5>
+<p>针对亚像素目标所占丰度较低的情况下，检测效果不佳</p>
+<h5 id="研究的创新点">研究的创新点</h5>
+<p>使用孪生网络（一种用来做验证的网络）来判别当前像素点是否和目标像素点属于同一类</p>
+<h5 id="实验设计">实验设计</h5>
+<ul>
+<li>影响因素：亚像素目标丰度、高光谱图像背景复杂程度
+<ul>
+<li>丰度：10%、1%，还需要根据实际实验目的进行设计</li>
+<li>高光谱图像：图像尺寸大小（场地限制）、背景多样性</li>
+<li>外观属性是否一致对结果的影响</li>
+</ul>
+</li>
+<li>可能遇到的问题
+<ul>
+<li>高光谱仪的空间分辨率是否会太高</li>
+<li>如何定标</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">材质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">碳钢珠 （1mm/1.5mm/2mm/2.5mm/3mm/3.5mm）</td>
+</tr>
+<tr>
+<td align="center">塑料珠（3mm/4mm）</td>
+</tr>
+<tr>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>空间分辨率为3mm</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">弹珠尺寸</th>
+<th align="center">丰度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1mm</td>
+<td align="center">8.73%</td>
+</tr>
+<tr>
+<td align="center">1.5mm</td>
+<td align="center">19.63%</td>
+</tr>
+<tr>
+<td align="center">2mm</td>
+<td align="center">34.91%</td>
+</tr>
+<tr>
+<td align="center">2.5mm</td>
+<td align="center">54.54%</td>
+</tr>
+<tr>
+<td align="center">3mm</td>
+<td align="center">78.54%</td>
+</tr>
+<tr>
+<td align="center">3.5mm</td>
+<td align="center">100%</td>
+</tr>
+<tr>
+<td align="center">4mm</td>
+<td align="center">100%</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center">背景环境</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">木板</td>
+</tr>
+<tr>
+<td align="center">细沙</td>
+</tr>
+<tr>
+<td align="center">泥土</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>需要材料
+<ul>
+<li>双面胶</li>
+<li>3.5mm碳钢珠</li>
+<li>3mm/4mm塑料珠</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

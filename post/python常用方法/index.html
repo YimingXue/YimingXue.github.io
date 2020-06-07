@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://YimingXue.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://YimingXue.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <h1 id="python">python</h1>
+<h1 id="python常用方法记录">Python常用方法记录</h1>
+<h2 id="python中list和str互换">python中list和str互换</h2>
+<p><strong>list转str</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(list)
+<span style="color:#75715e"># list中的元素需要为字符型，若为整型，则需要先转换成字符型再转成str类型</span>
+string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([str(item) <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> num_list])
+</code></pre></div><p><strong>str转list</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">list(string)
+</code></pre></div><h2 id="python-print-不换行打印">Python print 不换行打印</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">5</span>):
+    <span style="color:#66d9ef">print</span>(i, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>)
+</code></pre></div><h2 id="python新建文件夹">Python新建文件夹</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+
+path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/home/xueyiming/data/&#34;</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(path):
+    os<span style="color:#f92672">.</span>makedirs(path)
+</code></pre></div><h2 id="python中lambda表达式filter和map">Python中lambda表达式、filter和map</h2>
+<h5 id="lambda语句">lambda语句</h5>
+<p>lambda语句构建一个函数对象，其语法为：<code>lambda(传入参数):(返回值)</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">g <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+g(<span style="color:#ae81ff">5</span>)
+f <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x, y: x <span style="color:#f92672">+</span> y
+f(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>)
+</code></pre></div><h5 id="内置函数filter">内置函数filter</h5>
+<p>过滤器：filter。filter接收两个参数，第一个参数是函数或者None，第二个参数是可迭代的数据，filter将可迭代数据中的每一个元素都放入第一个数据进行计算，并返回返回值为True的元素。返回值是一个filter对象，需要转换为列表或者元组进行查看</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">list(filter(None, [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, False, True]))
+<span style="color:#75715e"># 返回：[1, True]，注意返回的是一个新列表，原列表本身是不变的</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">odd</span>(x):
+    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span>
+temp <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">10</span>)
+show <span style="color:#f92672">=</span> filter(odd, temp)
+list(show)
+<span style="color:#75715e"># 返回：[1,3,5,7,9]</span>
+
+list(filter(<span style="color:#66d9ef">lambda</span> x: x <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span>, range(<span style="color:#ae81ff">10</span>)))
+<span style="color:#75715e"># 返回：[1,3,5,7]</span>
+</code></pre></div><h5 id="内置函数map">内置函数map</h5>
+<p>map方法用于映射，其参数与filter一样，其作用是将序列的每一个元素作为函数的参数进行运算加工，直到所有元素都加工完毕，并返回一个新的序列。map的返回值是map对象，需要转变为列表或元组查看</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">list(map(<span style="color:#66d9ef">lambda</span> x: x <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>, range(<span style="color:#ae81ff">10</span>)))
+<span style="color:#75715e"># 返回：[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</span>
+</code></pre></div><h2 id="python中raw_input和sysstdinreadline的区别">Python中raw_input()和sys.stdin.readline()的区别</h2>
+<p><code>sys.stdin.readline()</code>会将标准输入全部获取，包括末尾的<code>\n</code>，因此使用<code>len()</code>计算长度的时候是把换行符<code>\n</code>算进去的，但是<code>raw_input()</code>获取输入时返回的结果是不包含末尾的换行符<code>\n</code>的。</p>
+<p>因此如果使用<code>sys.stdin.readline()</code>获取输入，需要使用<code>strip()</code>函数去掉末尾的换行符，<code>sys.stdin.readline().strip()</code></p>
+<h2 id="python-getopt模块">Python getopt模块</h2>
+<p><a href="https://www.jianshu.com/p/a877e5b46b2d">Python命令行:getopt模块详解</a></p>
+<h2 id="python中defaultdict方法">Python中defaultdict方法</h2>
+<p><code>collections.default</code>类是python内建dict类的一个子类，第一个参数为default_factory属性提供初始值，默认为None。它覆盖一个方法并添加一个可写实例变量。它的功能与dict相同，但会为一个不存在的键提供默认值，从而避免KeyError异常</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> defaultdict
+bag <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#e6db74">&#39;orange&#39;</span>, <span style="color:#e6db74">&#39;cherry&#39;</span>]
+count <span style="color:#f92672">=</span> collections<span style="color:#f92672">.</span>defaultdict(int)
+<span style="color:#66d9ef">for</span> fruit <span style="color:#f92672">in</span> bag:
+    count[fruit] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><p>参考资料：<a href="https://blog.csdn.net/u014248127/article/details/79338543">Python中的defaultdict方法</a></p>
+<h2 id="python中heapq模块">Python中heapq模块</h2>
+<p>通过heapq模块建立堆这种数据结构</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 通过heapq模块实现堆排序</span>
+<span style="color:#75715e"># 1. 建立一个空堆然后将数导入进去</span>
+<span style="color:#75715e"># 2. 再进行弹出操作就形成了一个堆排序</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">heapSort</span>(alist):
+    h <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> alist:
+        heapq<span style="color:#f92672">.</span>heappush(h, item)
+    <span style="color:#66d9ef">return</span> [heapq<span style="color:#f92672">.</span>heappop(h) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(h))]
+<span style="color:#75715e"># heapq.heappush的时候就自动建立好一个堆。当然如果对于已有列表转换成堆可以使用heapify()</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">heapSort</span>(alist):
+    heapq<span style="color:#f92672">.</span>heapify(alist)
+    heap <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">while</span> list:
+        heap<span style="color:#f92672">.</span>append(heapq<span style="color:#f92672">.</span>heappop(alist))
+    alist[:] <span style="color:#f92672">=</span> heap
+    <span style="color:#66d9ef">return</span> alist
+</code></pre></div><h2 id="python中的warnings模块忽略告警信息">Python中的Warnings模块忽略告警信息</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> warnings
+warnings<span style="color:#f92672">.</span>filterwarnings(<span style="color:#e6db74">&#34;ignore&#34;</span>)
+</code></pre></div><h2 id="python输出大写字母小写字母和数字">Python输出大写字母，小写字母和数字</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(chr[i] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">48</span>, <span style="color:#ae81ff">58</span>)) <span style="color:#75715e"># 数字</span>
+<span style="color:#66d9ef">print</span>(chr[i] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">56</span>, <span style="color:#ae81ff">91</span>)) <span style="color:#75715e"># 大写数字</span>
+<span style="color:#66d9ef">print</span>(chr[i] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">97</span>, <span style="color:#ae81ff">123</span>)) <span style="color:#75715e"># 小写数字</span>
+</code></pre></div><p><code>ord()</code>函数是<code>chr()</code>函数的配对函数，它以一个字符（长度为1的字符串）作为参数，返回对应的 ASCII 数值，或者 Unicode 数值。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ord(<span style="color:#e6db74">&#39;A&#39;</span>) <span style="color:#75715e"># 输出65</span>
+</code></pre></div><h2 id="python无依赖实现一个带百分比的简单进度条">Python无依赖实现一个带百分比的简单进度条</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
+<span style="color:#f92672">import</span> sys
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">report_progress</span>(progress, total, lbar_prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>, rbar_prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>):
+    percent <span style="color:#f92672">=</span> int(progress <span style="color:#f92672">/</span> float(total) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>)
+    buf <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">|</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">|  </span><span style="color:#e6db74">%s%d</span><span style="color:#e6db74">/</span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">%</span>(lbar_prefix, (<span style="color:#e6db74">&#39;#&#39;</span> <span style="color:#f92672">*</span> percent)<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">100</span>, <span style="color:#e6db74">&#39;-&#39;</span>),
+        rbar_prefix, progress, total, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%d%%</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">%</span>(percent))
+    sys<span style="color:#f92672">.</span>stdout<span style="color:#f92672">.</span>write(buf)
+    sys<span style="color:#f92672">.</span>stdout<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">&#39;</span>)
+    sys<span style="color:#f92672">.</span>stdout<span style="color:#f92672">.</span>flush()
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">report_progress_done</span>():
+    sys<span style="color:#f92672">.</span>stdout<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+
+
+
+total <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+report_progress(<span style="color:#ae81ff">0</span>, total)
+<span style="color:#66d9ef">for</span> progress <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">101</span>):
+    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.1</span>)
+    report_progress(progress, total)
+report_progress_done()
+</code></pre></div><h2 id="python内置函数-排列组合函数">Python内置函数-排列组合函数</h2>
+<ul>
+<li>有放回抽样排列, <code>product</code></li>
+<li>不放回抽样排列,  <code>premutations</code></li>
+<li>有放回抽样组合, <code>combinations_with_replacement</code></li>
+<li>不放回抽样组合, <code>combinations</code></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> itertools
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> itertools<span style="color:#f92672">.</span>product(<span style="color:#e6db74">&#39;ABCD&#39;</span>, repeat<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>):
+    <span style="color:#66d9ef">print</span>(i)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> scipy.special <span style="color:#f92672">import</span> comb, perm
+perm(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>)
+comb(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>)
+</code></pre></div><h2 id="python-ljust函数">Python ljust()函数</h2>
+<p>Python ljust() 方法返回一个原字符串左对齐,并使用空格填充至指定长度的新字符串。如果指定的长度小于原字符串的长度则返回原字符串。</p>
+<p><code>str.ljust(width[, fillchar])</code></p>
+<ul>
+<li>width，指定字符串长度</li>
+<li>fillchar，填充字符，默认为空格</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;this is string example....wow!!!&#34;</span>;
+<span style="color:#66d9ef">print</span> str<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">50</span>, <span style="color:#e6db74">&#39;0&#39;</span>);
+<span style="color:#75715e"># 以上实例输出结果如下：</span>
+<span style="color:#75715e"># this is string example....wow!!!000000000000000000</span>
+</code></pre></div><h2 id="python能表示的最大整数和浮点数">Python能表示的最大整数和浮点数</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(sys<span style="color:#f92672">.</span>maxsize)
+<span style="color:#66d9ef">print</span>(float(<span style="color:#e6db74">&#39;inf&#39;</span>)) <span style="color:#75715e"># 输出为inf</span>
+</code></pre></div><h2 id="python-bin函数">Python bin()函数</h2>
+<p>bin()函数返回一个正数int或者长整数long int的二进制表示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span>bin(<span style="color:#ae81ff">10</span>)
+<span style="color:#e6db74">&#39;0b1010&#39;</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> bin(<span style="color:#ae81ff">20</span>)
+<span style="color:#e6db74">&#39;0b10100&#39;</span>
+</code></pre></div><h2 id="python中的位运算">Python中的位运算</h2>
+<p>针对leetcode405题&quot;数字转换为十六进制数&rdquo;，其中针对负数的问题</p>
+<ul>
+<li>使用<code>0xf</code>可以获取数字的低4位</li>
+<li><code>&gt;&gt;</code>算数位移，其中正数右移左边补0，负数右移左边补1</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">toHex</span>(self, num):
+        <span style="color:#66d9ef">if</span> num <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;0&#39;</span>
+        hex <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;123456789abcdef&#39;</span>
+        result <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+        <span style="color:#66d9ef">while</span> num <span style="color:#f92672">and</span> len(result) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">8</span>:
+            result <span style="color:#f92672">=</span> hex[num <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xf</span>] <span style="color:#f92672">+</span> result
+            num <span style="color:#f92672">=</span> num <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">4</span>
+        <span style="color:#66d9ef">return</span> result
+</code></pre></div><h2 id="python-int函数">Python int()函数</h2>
+<p>int(x, base=10)函数可以将一个任意进制数字转换成十进制<code>int('11', 2)</code>，表示‘11’这个字符串代表的是一个二进制数字，将它转换成十进制数字</p>
+<h2 id="python-glob">Python glob</h2>
+<p>glob是python自带的一个文件操作相关模块，用它可以查找符合自己目的文件。</p>
+<p>glob模块的主要方法就是glob，该方法返回所有匹配的文件路径列表（list）</p>
+<h2 id="python字典">Python字典</h2>
+<ul>
+<li>
+<p><code>dict.get(key, default=None)</code>，返回指定键的值，如果值不在字典中返回default值</p>
+</li>
+<li>
+<p><code>dict.items()</code>，以列表返回可遍历的（键，值）元组数组</p>
+</li>
+<li>
+<p><code>dict.keys()</code>，以列表返回一个字典所有的键</p>
+</li>
+<li>
+<p><code>dict.values()</code>，以列表返回一个字典中所有值</p>
+</li>
+<li>
+<p>有序字典</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> collections
+    
+orderedDic <span style="color:#f92672">=</span> collections<span style="color:#f92672">.</span>OrderedDict() <span style="color:#75715e"># 有序字典</span>
+value_orderedDic <span style="color:#f92672">=</span> collections<span style="color:#f92672">.</span>OrderedDict(sorted(orderedDic<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> t: t[<span style="color:#ae81ff">1</span>])) <span style="color:#75715e"># 按照字典的values来排序</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h2 id="npconcatenate">np.concatenate</h2>
+<p>np.concatenate((a1, a2, &hellip;), axis= 0)用以解决数组拼接问题，axis=0是在纵向方向进行拼接，axis=1是在横轴方向进行拼接。</p>
+<p>list转换成numpy可以直接使用这个来完成</p>
+<h2 id="python将多个list合并为一个">Python将多个list合并为一个</h2>
+<ul>
+<li>
+<p>使用'+&rsquo;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">l1 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
+l2 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>]
+l3 <span style="color:#f92672">=</span> l1 <span style="color:#f92672">+</span> l2
+</code></pre></div></li>
+<li>
+<p>使用extend方法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">l1<span style="color:#f92672">.</span>extend(l2)
+</code></pre></div></li>
+<li>
+<p>使用切片，可以将list插入另一个list的任意位置</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">l1[len(l1):] <span style="color:#f92672">=</span> l2
+</code></pre></div></li>
+</ul>
+<h2 id="python中input和raw_input的区别">Python中input()和raw_input()的区别</h2>
+<ul>
+<li>
+<p>raw_input()输入内容都当成字符串来处理</p>
+</li>
+<li>
+<p>input()必须按照python的规则来，如果输入的是string就必须要加引号</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">name <span style="color:#f92672">=</span> raw_input(<span style="color:#e6db74">&#39;Your name: &#39;</span>)
+age <span style="color:#f92672">=</span> raw_input(<span style="color:#e6db74">&#39;Your age: &#39;</span>)
+<span style="color:#66d9ef">print</span> type(name), type(age) <span style="color:#75715e"># str, str</span>
+  
+name <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#39;Your name: &#39;</span>) <span style="color:#75715e"># 输入字符串要加引号</span>
+age <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#39;Your age: &#39;</span>)
+<span style="color:#66d9ef">print</span> type(name), type(age) <span style="color:#75715e"># str int</span>
+</code></pre></div></li>
+<li>
+<p>使用raw_input()还可以暂停程序</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">raw_input(<span style="color:#e6db74">&#39;Press any key to continue!&#39;</span>)
+</code></pre></div></li>
+</ul>
+<h2 id="python读写matlab中mat文件">Python读写matlab中.mat文件</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> scipy.io <span style="color:#f92672">as</span> sio
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+ 
+<span style="color:#75715e">###下面是讲解python怎么读取.mat文件以及怎么处理得到的结果###</span>
+load_fn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;xxx.mat&#39;</span>
+load_data <span style="color:#f92672">=</span> sio<span style="color:#f92672">.</span>loadmat(load_fn)
+load_matrix <span style="color:#f92672">=</span> load_data[<span style="color:#e6db74">&#39;matrix&#39;</span>] <span style="color:#75715e">#假设文件中存有字符变量是matrix，例如matlab中save(load_fn, &#39;matrix&#39;);当然可以保存多个save(load_fn, &#39;matrix_x&#39;, &#39;matrix_y&#39;, ...);</span>
+load_matrix_row <span style="color:#f92672">=</span> load_matrix[<span style="color:#ae81ff">0</span>] <span style="color:#75715e">#取了当时matlab中matrix的第一行，python中数组行排列</span>
+ 
+<span style="color:#75715e">###下面是讲解python怎么保存.mat文件供matlab程序使用###</span>
+save_fn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;xxx.mat&#39;</span>
+save_array <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>])
+sio<span style="color:#f92672">.</span>savemat(save_fn, {<span style="color:#e6db74">&#39;array&#39;</span>: save_array}) <span style="color:#75715e">#和上面的一样，存在了array变量的第一行</span>
+ 
+save_array_x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>])
+save_array_y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>])
+sio<span style="color:#f92672">.</span>savemat(save_fn, {<span style="color:#e6db74">&#39;array_x&#39;</span>: save_array_x, <span style="color:#e6db74">&#39;array_x&#39;</span>: save_array_x}) <span style="color:#75715e">#同理，只是存入了两个不同的变量供使用</span>
+</code></pre></div><h2 id="python-里小数点精度的控制">Python 里小数点精度的控制</h2>
+<ul>
+<li>
+<p>python 默认的是17位精度，即小数点后16位</p>
+</li>
+<li>
+<p>使用round()</p>
+<ul>
+<li>
+<p>round()一般使用四舍五入的规则，但是碰到舍入的后一位是5的时候，如果要取舍的位数前是偶数则直接舍弃，如果是奇数则向上取舍。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">round(<span style="color:#ae81ff">2.555</span>, <span style="color:#ae81ff">2</span>) <span style="color:#75715e"># 2.56</span>
+round(<span style="color:#ae81ff">2.565</span>, <span style="color:#ae81ff">2</span>) <span style="color:#75715e"># 2.56</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>使用格式化</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%.2f</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">2.555</span>) <span style="color:#75715e"># 2.56</span>
+a <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%.2f</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">2.565</span>) <span style="color:#75715e"># 2.56</span>
+</code></pre></div></li>
+<li>
+<p>整数取整</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">form math <span style="color:#f92672">import</span> ceil<span style="color:#f92672">,</span> floor
+ceil(<span style="color:#ae81ff">2.5</span>) <span style="color:#75715e"># 3</span>
+floor(<span style="color:#ae81ff">2.5</span>) <span style="color:#75715e"># 2</span>
+</code></pre></div></li>
+</ul>
+<h2 id="python-字符串">Python 字符串</h2>
+<ul>
+<li>python中的字符串是不能改变，不能赋值的。不过可以转成list，即<code>list(string)</code>后赋值再转回来<code>''.join(list)</code>。可以直接输出字符串中的特定字符，或者从特定位置开始的字符串</li>
+<li>针对python中的字符串，<code>string[min:max:stride]</code>，可以用来颠倒字符串中的字符</li>
+<li><code>string.find(item)</code>和<code>string.rfind(item)</code>，是从左边和右边开始寻找某个字符</li>
+<li><code>string.count(item)</code>，统计字符串内item的个数</li>
+<li><code>string.upper()</code>和<code>string.lower()</code></li>
+<li><code>string.isdigit()</code>, <code>string.isalpha()</code>, <code>string.isalnum()</code>,<code>string.isnumeric()</code>，如果string中至少有一个字符并且只包含数字、字符、字母或者数字、数字(这种方法只针对unicode对象，定义unicode对象只要在字符串前添加&rsquo;u&rsquo;前缀即可)，则返回True，否则返回False</li>
+<li><code>string.lstrip()</code>, <code>string.rstrip()</code>去除字符串左边和右边的空格</li>
+<li><code>string.split(str)</code>分割字符</li>
+<li><code>string.isspace()</code>如果string中只包含空格，则返回True，否则返回False</li>
+<li>字符串合并直接‘+’即可</li>
+</ul>
+<h2 id="python中常用位操作小技巧">Python中常用位操作小技巧</h2>
+<ul>
+<li>
+<p>判断奇偶：只要根据最末位是0还是1来决定，为0就是偶数，为1就是奇数。表达为：<code>if ((a &amp; 1) == 0)</code></p>
+</li>
+<li>
+<p>交换两数：一个数和自己异或的结果为0， 任何数与0异或结果都不会变</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#f92672">=</span> a <span style="color:#f92672">^</span> b
+b <span style="color:#f92672">=</span> b <span style="color:#f92672">^</span> a
+a <span style="color:#f92672">=</span> a <span style="color:#f92672">^</span> b
+</code></pre></div></li>
+<li>
+<p>变换符号：只需要取反后加1即可，<code>a = ~a + 1</code></p>
+</li>
+<li>
+<p>求绝对值：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">i <span style="color:#f92672">=</span> a <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">31</span> <span style="color:#75715e"># 移位来取符号位</span>
+<span style="color:#66d9ef">return</span> a <span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">~</span>a <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</code></pre></div></li>
+<li>
+<p>不用加减乘除运算符计算两个数字之和</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BitAdd</span>(a, b):
+  nSumNoCarry <span style="color:#f92672">=</span> a <span style="color:#f92672">^</span> b <span style="color:#75715e"># 非进位</span>
+    nCarry <span style="color:#f92672">=</span> a <span style="color:#f92672">&amp;</span> b <span style="color:#75715e"># 进位</span>
+<span style="color:#75715e">#    if nCarry != 0:</span>
+<span style="color:#75715e">#        return BitAdd(nSumNoCarry, nCarry &lt;&lt; 1)</span>
+<span style="color:#75715e">#    else:</span>
+<span style="color:#75715e">#        return nSumNoCarry # 上面这种写法针对负数不成立</span>
+  <span style="color:#66d9ef">return</span> sum([nSumNoCarry, nCarry <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>])
+</code></pre></div></li>
+</ul>
+<h2 id="python-拓展维度">Python 拓展维度</h2>
+<ul>
+<li>针对numpy.array，除去为1的维度使用<code>np.squeeze(array)</code></li>
+<li>针对numpy.array，拓展维度使用<code>np.expand_dims(array, axis=index)</code></li>
+</ul>
+<h2 id="python处理图像几何变换">Python处理图像几何变换</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+
+<span style="color:#66d9ef">try</span>:
+    im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#39;test.jpg&#39;</span>)
+    out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>resize((<span style="color:#ae81ff">128</span>,<span style="color:#ae81ff">128</span>)) <span style="color:#75715e"># 改变大小</span>
+    out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>rotate(<span style="color:#ae81ff">45</span>) <span style="color:#75715e"># 45度旋转</span>
+    out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>FLIP_LEFT_RIGHT) <span style="color:#75715e"># 水平翻转</span>
+    out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>FLIP_TOP_DOWN) <span style="color:#75715e"># 垂直翻转</span>
+    out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>Rotate_90) <span style="color:#75715e"># 90度顺时针旋转</span>
+    out<span style="color:#f92672">.</span>save(test2<span style="color:#f92672">.</span>jpg)
+
+<span style="color:#66d9ef">except</span> <span style="color:#a6e22e">IOError</span>:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;No File!&#39;</span>)
+</code></pre></div><h2 id="计数排序">计数排序</h2>
+<p><strong>优点：</strong></p>
+<p>计数排序不是一个基于比较的排序算法，它的优势在于对一定范围内的整数排序时，它的复杂度为O(n+k)(其中k是整数的范围)，快于任何比较排序算法</p>
+<p>计数排序不同于”快排“、“归并排序”等其他许多排序，其他的排序都是基于“数字之间的比较”而计数排序是基于“对数字的统计”</p>
+<p><strong>操作过程：</strong></p>
+<p>在计数排序中，我们定义了一个数组 cnt 用来统计要排序的序列中每一个数字出现的次数，数组 cnt 的大小为要排序的序列中最大的数字，cnt[i] 表示数字 i 出现的次数。然后循环 cnt 并将 cnt[i]!=0 的数字以 cnt[i] 的个数输入到一个新的数组中，因为 i 是从小到大变化，所以可以保证先输入的数会比后输入的数要小。</p>
+<p><strong>缺点：</strong></p>
+<p>因为计数排序是依靠 cnt 数组统计每一个数字出现的次数，所以 cnt 数组的大小要通过数据范围决定，这也决定了计数排序更适用于“小范围”的“大量数据”排序</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">CountOrder</span>(arrayA, len_arrayA):
+    max_num <span style="color:#f92672">=</span> max(arrayA)
+    cnt <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(max_num <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len_arrayA):
+        cnt[arrayA[i]] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    ptr_end <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(max_num):
+        <span style="color:#66d9ef">if</span> cnt[i] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>:
+            <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(int(cnt[i])):
+                arrayA[ptr_end] <span style="color:#f92672">=</span> i
+                ptr_end <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    listA <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">54</span>]
+    arrayA <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(listA)
+    OrderedArrayA <span style="color:#f92672">=</span> CountOrder(arrayA, len(arrayA))
+</code></pre></div><h2 id="python-list-排序">Python List 排序</h2>
+<ul>
+<li>
+<p><code>sort</code>是应用在list上的方法，<code>sorted</code>可以对所有可迭代的对象进行排序操作</p>
+</li>
+<li>
+<p>使用<code>list.sort()</code>，这种方式是在原来list的基础上进行的排序，<code>sorted(list)</code>，这种方式会生成一个新的list</p>
+</li>
+<li>
+<p><code>sorted(L, key=lambda x:x[1])</code>，利用key来进行排序</p>
+</li>
+</ul>
+<h2 id="python字典按照value进行排序">Python字典按照value进行排序</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">d <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;a&#39;</span>:<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;b&#39;</span>,<span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#39;c&#39;</span>:<span style="color:#ae81ff">2</span>}
+<span style="color:#75715e"># 方法一</span>
+sorted_list <span style="color:#f92672">=</span> sorted(d<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x:x[<span style="color:#ae81ff">1</span>], reverse<span style="color:#f92672">=</span>True)
+<span style="color:#75715e"># 方法二</span>
+<span style="color:#f92672">import</span> operator
+<span style="color:#75715e"># 按照item中的第二个字符进行排序，即按照value排序</span>
+<span style="color:#75715e"># 这种方式字典的顺序依旧不变，但转化为list嵌套tuple格式之后，完成了按照value排序的操作</span>
+sorted_d <span style="color:#f92672">=</span> sorted(d<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span>operator<span style="color:#f92672">.</span>itemgetter(<span style="color:#ae81ff">1</span>))
+<span style="color:#66d9ef">print</span> sorted_d
+<span style="color:#75715e"># 输出</span>
+[(<span style="color:#e6db74">&#39;a&#39;</span>,<span style="color:#ae81ff">1</span>),(<span style="color:#e6db74">&#39;c&#39;</span>,<span style="color:#ae81ff">2</span>),(<span style="color:#e6db74">&#39;b&#39;</span>,<span style="color:#ae81ff">4</span>)]
+</code></pre></div><h2 id="python-map函数">Python map()函数</h2>
+<p>map()会根据提供的函数对指定序列做映射，语法<code>map(function, iterable, ...)</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">square</span>(x):
+    <span style="color:#66d9ef">return</span> x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+map(square, [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>]) <span style="color:#75715e"># 计算列表中各个元素的平方</span>
+
+map(<span style="color:#66d9ef">lambda</span> x:x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>, [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>]) <span style="color:#75715e"># 使用lambda匿名函数</span>
+<span style="color:#75715e"># 提供两个列表，对相同位置的列表数据进行相加</span>
+map(<span style="color:#66d9ef">lambda</span> x,y: x <span style="color:#f92672">+</span> y, [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>])
+</code></pre></div><p>使用map()可以直接将数字分裂开</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">number <span style="color:#f92672">=</span> <span style="color:#ae81ff">111</span>
+list_number <span style="color:#f92672">=</span> list(map(int, number))
+<span style="color:#66d9ef">print</span> list_number
+<span style="color:#75715e"># 输出：[1,1,1]</span>
+</code></pre></div><p>思考：如何求数字的各位数字和</p>
+<h2 id="python-eval函数">Python eval()函数</h2>
+<p>eval(<em>expression</em>, <em>globals=None</em>, <em>locals=None</em>)函数用来执行一个字符串表达式，并返回表达式的值</p>
+<p>globals和locals可以指定expression作用域，其中locals权健高于globals</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>
+eval(<span style="color:#e6db74">&#39;3*x&#39;</span>)
+<span style="color:#75715e"># 输出：21</span>
+
+number <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1234&#39;</span>
+eval(number)
+<span style="color:#75715e"># 输出：1234</span>
+<span style="color:#75715e"># 由此可见eval函数可以将数字字符串转换成int类型，其实就是将引号中的式子看成运算操作</span>
+</code></pre></div><h2 id="python-zip函数">Python zip()函数</h2>
+<p><code>zip()</code>函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。注意：如果各个迭代器的元素个数不一致，则返回列表长度与最短的对象相同，利用<code>*</code>操作符，可以将元组解压为列表。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span>a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> b <span style="color:#f92672">=</span> [<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> c <span style="color:#f92672">=</span> [<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> zipped <span style="color:#f92672">=</span> zip(a,b)     <span style="color:#75715e"># 打包为元组的列表</span>
+[(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>)]
+<span style="color:#f92672">&gt;&gt;&gt;</span> zip(a,c)              <span style="color:#75715e"># 元素个数与最短的列表一致</span>
+[(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>)]
+<span style="color:#f92672">&gt;&gt;&gt;</span> zip(<span style="color:#f92672">*</span>zipped)          <span style="color:#75715e"># 与 zip 相反，*zipped 可理解为解压，返回二维矩阵式</span>
+[(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>)]
+</code></pre></div><h2 id="img和array转换">img和array转换</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+
+img_arr <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(img)
+img <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>fromarray(img_norm, img<span style="color:#f92672">.</span>mode)
+</code></pre></div><h2 id="python-collectioncounter">Python collection.Counter</h2>
+<p>Counter是对字典类型的补充，用于追踪值的出现次数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> collections
+<span style="color:#75715e"># 把所有元素出现的次数统计下来</span>
+result <span style="color:#f92672">=</span> collections<span style="color:#f92672">.</span>Counter(<span style="color:#e6db74">&#34;sdfdsgsdf;sdfssfd&#34;</span>)
+<span style="color:#66d9ef">print</span> result
+<span style="color:#75715e"># 输出结果：</span>
+Counter({<span style="color:#e6db74">&#39;s&#39;</span>: <span style="color:#ae81ff">6</span>, <span style="color:#e6db74">&#39;d&#39;</span>: <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#39;f&#39;</span>: <span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#39;;&#39;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;g&#39;</span>: <span style="color:#ae81ff">1</span>})
+
+<span style="color:#75715e"># 获取元素出现次数最多的几个</span>
+most_often <span style="color:#f92672">=</span> result<span style="color:#f92672">.</span>most_commom(<span style="color:#ae81ff">3</span>) <span style="color:#75715e"># 获取元素次数最多的前3个</span>
+<span style="color:#66d9ef">print</span> most_often
+<span style="color:#75715e"># 输出结果</span>
+[(<span style="color:#e6db74">&#39;s&#39;</span>, <span style="color:#ae81ff">6</span>), (<span style="color:#e6db74">&#39;d&#39;</span>, <span style="color:#ae81ff">5</span>), (<span style="color:#e6db74">&#39;f&#39;</span>, <span style="color:#ae81ff">4</span>)]
+
+<span style="color:#75715e"># 其他输出方式</span>
+<span style="color:#75715e"># 迭代输出元素（同一元素出现几次，就连续输出该元素几次），无序</span>
+<span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> result<span style="color:#f92672">.</span>elements():
+    <span style="color:#66d9ef">print</span> item
+<span style="color:#75715e"># 把所有元素拿出来，再统计该元素出现次数</span>
+<span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> result<span style="color:#f92672">.</span>items():
+    <span style="color:#66d9ef">print</span> k,v
+</code></pre></div><h2 id="copy-deepcopy-与赋值的区别">copy(), deepcopy() 与赋值的区别</h2>
+<ul>
+<li>深复制，deepcopy()，即将被复制对象完全再复制一遍作为独立的新个体单独存在</li>
+<li>等于赋值，=，并不会产生一个独立的对象单独存在，它只是将原有的数据块打上一个新标签。因此当一个标签改变时，其下的数据块也会发生变化，另一个标签也会随之改变。</li>
+<li>浅复制，copy()
+<ul>
+<li>当浅复制的值是==不可变对象（数值，字符串，元组）==时，这与“等于赋值”的情况一样，对象的id值与浅复制原来的值相同，即标签相同。</li>
+<li>当浅复制的值是==可变对象（列表和字典）==时，这时会产生一个“不是那么独立的对象”，分两种情况：
+<ul>
+<li>复制的对象中==没有复杂的子对象==，原来值的改变并不会影响浅复制的值，同时浅复制的值改变也不会影响原来的值。</li>
+<li>复制的对象中==有复杂子对象==（例如列表中的一个子元素是一个列表），如果==不改变其中复杂子对象的值==，浅复制的值改变并不会影响原来的值。但是==改变其中复杂子对象的值==会影响==浅复制的值==。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>浅复制对于一个==复杂对象的子对象==不会完全复制，而是当作一个公共镜像存储起来，所有对他的复制都被当成一个引用，所以说==当其中一个引用将镜像改变之后，另一个引用使用镜像的时候镜像已经被改变了==。</p>
+<p>而深复制的时候会将复杂对象的每一层复制一个单独的个体出来。</p>
+<p>参考文献：</p>
+<p><a href="https://blog.csdn.net/u011630575/article/details/78604226">Python&mdash;copy()、deepcopy()与赋值的区别</a></p>
+<h2 id="python-list-删除元素">Python List 删除元素</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">listA <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>]
+<span style="color:#66d9ef">del</span> listA[<span style="color:#ae81ff">2</span>] <span style="color:#75715e"># 通过位置索引来删除list中的元素</span>
+list<span style="color:#f92672">.</span>pop(index<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>) <span style="color:#75715e"># 移除list中的一个元素（默认是最后一个元素），并且返回该元素的值</span>
+list<span style="color:#f92672">.</span>remove(obj) <span style="color:#75715e"># 移除list中某个值的第一个匹配项，感觉</span>
+                 <span style="color:#75715e"># 可以结合list.count(obj)（统计某个元素在列表中出现的次数）</span>
+</code></pre></div><h2 id="python-中的异或运算符-">Python 中的异或运算符 ^</h2>
+<ul>
+<li>
+<p>按位异或的三个特点：</p>
+<ul>
+<li>0^0=0, 0^1=1, 0异或任何数=任何数</li>
+<li>1^0=1, 1^1=0, 1异或任何数=任何数取反</li>
+<li>任何数异或自己相当于将自己置零</li>
+</ul>
+</li>
+<li>
+<p>使用按位异或实现不用临时变量将两个值交换</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#f92672">=</span> a <span style="color:#f92672">^</span> b
+b <span style="color:#f92672">=</span> b <span style="color:#f92672">^</span> a
+a <span style="color:#f92672">=</span> a <span style="color:#f92672">^</span> b
+</code></pre></div></li>
+</ul>
+<h2 id="python-filter函数">Python filter()函数</h2>
+<p>filter()函数用于过滤序列，过滤掉不符合条件的元素，然后返回由符合条件元素组成的新序列</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># fucntion 判断函数，iterable 可迭代对象</span>
+filter(function, iterable)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_odd</span>(n):
+    <span style="color:#66d9ef">return</span> n <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>
+
+newlist <span style="color:#f92672">=</span> filter(is_odd, [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">10</span>])
+<span style="color:#66d9ef">print</span> newlist
+</code></pre></div><h2 id="python-enumerate函数">Python enumerate()函数</h2>
+<p>enumerate()函数用于将一个可遍历的数据对象（如列表、元组或字符串）组合为一个索引序列，同时列出数据和数据下标，一般用来for循环当中。</p>
+<h2 id="python中单引号双引号3个单引号及3个双引号的区别">Python中单引号、双引号、3个单引号及3个双引号的区别</h2>
+<ul>
+<li>
+<p>单引号和双引号</p>
+<ul>
+<li>Python中单引号和双引号都可以用来表示一个字符串</li>
+<li>当你用单引号定义字符串的时候，它就会认为你字符串里面的双引号是普通字符，从而不需要转义，反之亦然。</li>
+</ul>
+</li>
+<li>
+<p>3个单引号及3个双引号</p>
+<ul>
+<li>
+<p>如果需要将字符串写成多行</p>
+</li>
+<li>
+<p>3个引号还有一个作用是==加注释==</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    LICHAO # LICHAO
+</span><span style="color:#e6db74">    DENGLI # DENGLI
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h2 id="python数字图像处理--skimage库">Python数字图像处理&ndash;skimage库</h2>
+<h4 id="图像的导入显示与存储">图像的导入、显示与存储</h4>
+<p>skimage包提供了很多图片处理功能，主要子模块有io，data，color</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 引入skimage模块</span>
+<span style="color:#f92672">from</span> skimage <span style="color:#f92672">import</span> io, data
+<span style="color:#75715e"># 从外部读取彩色图像并显示</span>
+img <span style="color:#f92672">=</span> io<span style="color:#f92672">.</span>imread(<span style="color:#e6db74">&#39;d:/dog.jpg&#39;</span>)
+io<span style="color:#f92672">.</span>imshow(img)
+<span style="color:#75715e"># 读取单张灰度图像</span>
+img <span style="color:#f92672">=</span> io<span style="color:#f92672">.</span>imread(<span style="color:#e6db74">&#39;d:/dog.jpg&#39;</span>, as_grey<span style="color:#f92672">=</span>True)
+io<span style="color:#f92672">.</span>imshow(img)
+<span style="color:#75715e"># 程序自带图像</span>
+img <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>lena()
+io<span style="color:#f92672">.</span>imshow(img)
+<span style="color:#75715e"># 保存图片，同样可以用做转换格式</span>
+img <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>chelsea()
+io<span style="color:#f92672">.</span>imshow(img)
+io<span style="color:#f92672">.</span>imsave(<span style="color:#e6db74">&#39;d:/cat.jpg&#39;</span>, img)
+</code></pre></div><h4 id="对图像像素级别的处理">对图像像素级别的处理</h4>
+<p>图片读入程序后是以numpy数组存在的，因此对numpy数组的一切功能也对图片适用。注意<code>img.shape</code>输出的是图像的高x宽x通道数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> skimage <span style="color:#f92672">import</span> io, data, color
+img <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>chelsea()
+<span style="color:#75715e"># 输出小猫图像的G通道中的第20行30列的像素值</span>
+pixel <span style="color:#f92672">=</span> img[<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">1</span>]
+<span style="color:#66d9ef">print</span>(pixel)
+<span style="color:#75715e"># 显示红色单通道图像</span>
+R <span style="color:#f92672">=</span> img[:,:,<span style="color:#ae81ff">0</span>]
+io<span style="color:#f92672">.</span>imshow(R)
+<span style="color:#75715e"># 对小猫图片进行剪裁</span>
+roi <span style="color:#f92672">=</span> img[<span style="color:#ae81ff">80</span>:<span style="color:#ae81ff">180</span>, <span style="color:#ae81ff">100</span>:<span style="color:#ae81ff">200</span>, :]
+io<span style="color:#f92672">.</span>imshow(roi)
+<span style="color:#75715e"># 适用color模块的rgb2gray()函数，将彩色三通道转换成灰度图</span>
+img_gray <span style="color:#f92672">=</span> color<span style="color:#f92672">.</span>rgb2gray(img)
+</code></pre></div><h4 id="图像数据类型及转换">图像数据类型及转换</h4>
+<p>一张图片的像素值范围是[0, 255]，因此默认类型为uint8 (0~255)。而float类型范围是[-1, 1]或[0, 1]，一张彩色图像转换为灰度图像后，它的类型就从uint8转换成float</p>
+<table>
+<thead>
+<tr>
+<th align="center">Function name</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">img_as_float</td>
+<td align="center">转换成float64</td>
+</tr>
+<tr>
+<td align="center">img_as_ubyte</td>
+<td align="center">转换为uint8</td>
+</tr>
+<tr>
+<td align="center">img_as_uint</td>
+<td align="center">转换为uint16</td>
+</tr>
+<tr>
+<td align="center">img_as_int</td>
+<td align="center">转换为int64</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> skimage <span style="color:#f92672">import</span> img_as_ubyte
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+img <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">1</span>], dtype<span style="color:#f92672">=</span>float)
+dst <span style="color:#f92672">=</span> im_as_ubyte(img)
+<span style="color:#66d9ef">print</span>(dst<span style="color:#f92672">.</span>dtype<span style="color:#f92672">.</span>name)
+</code></pre></div><h4 id="颜色空间极其转换">颜色空间极其转换</h4>
+<p>常用的颜色空间有灰度空间，rgb空间，hsv空间和cmyk空间，颜色空间转换以后图像类型都变成了float型</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> skimage <span style="color:#f92672">import</span> io, data, color
+img <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>chelsea()
+hsv <span style="color:#f92672">=</span> color<span style="color:#f92672">.</span>convert_colorspace(img, <span style="color:#e6db74">&#39;RGB&#39;</span>, <span style="color:#e6db74">&#39;HSV&#39;</span>)
+io<span style="color:#f92672">.</span>imshow(hsv)
+</code></pre></div><h4 id="图像的绘制">图像的绘制</h4>
+<table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">功能</th>
+<th align="center">调用格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">figure</td>
+<td align="center">创建一个显示窗口</td>
+<td align="center">plt.figure(num=1, figsize=(8,8))</td>
+</tr>
+<tr>
+<td align="center">imshow</td>
+<td align="center">绘制图片</td>
+<td align="center">plt.imshow(image)</td>
+</tr>
+<tr>
+<td align="center">show</td>
+<td align="center">显示窗口</td>
+<td align="center">plt.show()</td>
+</tr>
+<tr>
+<td align="center">subplot</td>
+<td align="center">划分子图</td>
+<td align="center">plt.subplot(2,2,1)</td>
+</tr>
+<tr>
+<td align="center">title</td>
+<td align="center">设置子图标题（与subplot结合使用）</td>
+<td align="center">plt.title(&lsquo;origin image&rsquo;)</td>
+</tr>
+<tr>
+<td align="center">axis</td>
+<td align="center">是否显示坐标尺</td>
+<td align="center">plt.axis(&lsquo;off&rsquo;)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> skimage <span style="color:#f92672">import</span> data
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+
+img <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>astronaut()
+plt<span style="color:#f92672">.</span>figure(num<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;astronaut&#39;</span>, figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">8</span>)) <span style="color:#75715e"># 创建一个名为astronaut的窗口，并设置大小</span>
+
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>) <span style="color:#75715e"># 将窗口分为一行两列两个子图，则可以显示两幅图片</span>
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;origin image&#39;</span>)
+plt<span style="color:#f92672">.</span>imshow(img) <span style="color:#75715e"># 绘制第一幅图片</span>
+
+plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>) <span style="color:#75715e"># 第二个子图</span>
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;R channel&#39;</span>) <span style="color:#75715e"># 第二幅图片标题</span>
+plt<span style="color:#f92672">.</span>imshow(img[:,:,<span style="color:#ae81ff">0</span>], plt<span style="color:#f92672">.</span>cm<span style="color:#f92672">.</span>grey) <span style="color:#75715e"># 绘制第二幅图片，且为灰度图</span>
+plt<span style="color:#f92672">.</span>axis(<span style="color:#e6db74">&#39;off&#39;</span>) <span style="color:#75715e"># 不显示坐标尺寸</span>
+
+plt<span style="color:#f92672">.</span>show() <span style="color:#75715e"># 显示窗口</span>
+</code></pre></div><p>参考资料： <a href="https://www.cnblogs.com/denny402/p/5121501.html">python数字图像处理</a></p>
+<h2 id="python图像处理--pilpython-imaging-library库">Python图像处理&ndash;PIL(Python Imaging Library)库</h2>
+<p>图像的集合变换，如缩放、旋转和翻转等，在图像处理中扮演着重要的角色，python中的Image类分别提供了这些操作的接口函数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+
+<span style="color:#75715e"># 读取图片</span>
+img <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;lenna.jpg&#34;</span>)
+img<span style="color:#f92672">.</span>show()
+img<span style="color:#f92672">.</span>save(<span style="color:#e6db74">&#34;/home/xueyiming/lenna.jpg&#34;</span>)
+
+<span style="color:#75715e"># 缩放图像</span>
+img_resized <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>resize((<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">128</span>))
+img_resized<span style="color:#f92672">.</span>show()
+
+<span style="color:#75715e"># 旋转图像</span>
+img_rotate <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>rotate(<span style="color:#ae81ff">45</span>)
+
+<span style="color:#75715e"># 翻转图像</span>
+img <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>FLIP_LEFT_RIGHT)
+img <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>FLIP_TOP_BOTTOM)
+img <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>ROTATE_90)
+img <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>ROTATE_180)
+img <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>ROTATE_270)
+
+<span style="color:#75715e"># 获取图像格式、模式和大小</span>
+<span style="color:#66d9ef">print</span>(img<span style="color:#f92672">.</span>format)
+<span style="color:#66d9ef">print</span>(img<span style="color:#f92672">.</span>mode)
+<span style="color:#66d9ef">print</span>(img<span style="color:#f92672">.</span>size)
+<span style="color:#66d9ef">print</span>(img<span style="color:#f92672">.</span>getpixel((<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>)))
+</code></pre></div><h2 id="matplotlib库绘制多条曲线图">matplotlib库绘制多条曲线图</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+<span style="color:#f92672">from</span> matplotlib.ticker <span style="color:#f92672">import</span> MultipleLocator, FormatStrFormatter
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+
+font1 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;family&#39;</span> : <span style="color:#e6db74">&#39;Times New Roman&#39;</span>,  
+<span style="color:#e6db74">&#39;weight&#39;</span> : <span style="color:#e6db74">&#39;normal&#39;</span>,  
+<span style="color:#e6db74">&#39;size&#39;</span>   : <span style="color:#ae81ff">9</span>,  
+} 
+
+<span style="color:#75715e"># 设定整张图大小</span>
+plt<span style="color:#f92672">.</span>subplots(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">9</span>))
+<span style="color:#75715e"># 第一张图</span>
+ax1 <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>)
+ax1<span style="color:#f92672">.</span>yaxis<span style="color:#f92672">.</span>set_major_locator(MultipleLocator(<span style="color:#ae81ff">15</span>)) <span style="color:#75715e"># 设定y轴刻度间距,每15标注一次</span>
+<span style="color:#75715e"># 第一张图第一条线</span>
+x <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">50</span>)
+y0 <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">20</span>)
+plt<span style="color:#f92672">.</span>plot(x, y0, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;black&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;y0&#39;</span>, linewidth<span style="color:#f92672">=</span><span style="color:#ae81ff">0.8</span>)
+plt<span style="color:#f92672">.</span>ylim(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">20</span>) <span style="color:#75715e"># 设定y周范围</span>
+<span style="color:#75715e"># 第一张图第二条线</span>
+x <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">50</span>)
+y1 <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">10</span>)
+plt<span style="color:#f92672">.</span>plot(x, y1, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;red&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;y1&#39;</span>, linewidth<span style="color:#f92672">=</span><span style="color:#ae81ff">0.8</span>)
+plt<span style="color:#f92672">.</span>legend(loc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;upper right&#39;</span>, prop<span style="color:#f92672">=</span>font1, frameon<span style="color:#f92672">=</span>False)
+plt<span style="color:#f92672">.</span>xticks([]) <span style="color:#75715e"># 去掉x坐标轴刻度</span>
+plt<span style="color:#f92672">.</span>xlim(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">50</span>) <span style="color:#75715e"># 设定x轴范围</span>
+
+plt<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#39;1.png&#39;</span>, dpi<span style="color:#f92672">=</span><span style="color:#ae81ff">600</span>)
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><h2 id="numpy库数组属性查看">numpy库数组属性查看</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>],dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>complex128)
+<span style="color:#66d9ef">print</span> type(a) <span style="color:#75715e"># 打印数组数据类型</span>
+<span style="color:#66d9ef">print</span> a<span style="color:#f92672">.</span>dtype <span style="color:#75715e"># 打印数组元素数据类型</span>
+<span style="color:#66d9ef">print</span> a<span style="color:#f92672">.</span>size <span style="color:#75715e"># 打印数组尺寸，即数组元素总数</span>
+<span style="color:#66d9ef">print</span> a<span style="color:#f92672">.</span>shape <span style="color:#75715e"># 打印数组形状</span>
+<span style="color:#66d9ef">print</span> a<span style="color:#f92672">.</span>ndim <span style="color:#75715e"># 打印数组的维度数目</span>
+</code></pre></div><h2 id="numpy中linspace函数">Numpy中linspace()函数</h2>
+<p><code>linspace(start, stop, num, endpoint, retstep)</code>，该函数用于指定一个等差数列，其中参数<code>start</code>指定数列起始值，<code>stop</code>指定数列终止值，<code>num</code>指定数列长度，<code>endpoint</code>为True时等差数列包含stop值（默认为True），<code>retstep</code>为True时返回等差数列同时也返回公差值（默认为False）。</p>
+<h2 id="numpyfull函数">Numpy.full()函数</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>full((<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>), np<span style="color:#f92672">.</span>inf)
+b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>full((<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>), <span style="color:#ae81ff">10</span>)
+<span style="color:#66d9ef">print</span>(a)
+<span style="color:#66d9ef">print</span>(b)
+
+<span style="color:#75715e"># 输出 inf代表一个无限大的正数</span>
+<span style="color:#75715e"># [[ inf  inf]</span>
+<span style="color:#75715e">#  [ inf  inf]]</span>
+
+<span style="color:#75715e"># [[10 10]</span>
+<span style="color:#75715e">#  [10 10]]</span>
+</code></pre></div><h2 id="numpy库--squeeze函数">Numpy库  squeeze()函数</h2>
+<p>np.squeeze()函数可以删除数组中的单维度条目，即把shape中为1的维度去掉，但是对非单维的维度不起作用。</p>
+<h2 id="numpy中的数组条件筛选功能">Numpy中的数组条件筛选功能</h2>
+<ul>
+<li><code>np.unique(data)</code>，该函数可以实现数组的唯一化，并且唯一化后的返回值会进行排序</li>
+<li><code>np.intersect1d(data1, data2)</code>，该函数可以实现求取两个数组集合的交集</li>
+<li><code>np.union1d(data1, data2)</code>，可以实现对两个数组集合的并集计算</li>
+<li><code>np.in1d(data1, data2)</code>，可以实现对第一个参数数组中的每个元素是否是第二个参数数组子集的判断，而最终通过判断返回的布尔数组即可判断两个参数数组的子集关系。</li>
+<li><code>np.setdiff1d(data1, data2)</code>，setdiff1d可以求解出存在于第一个集合但是并不存在于第二个集合中的元素。返回值是一个数组集合。</li>
+<li><code>np.setxor1d(data1, data2)</code>，setxor1d用于求解不同时存在于两个数组中的元素，并返回一个数组集合。返回的结果是一个有序的数组序列。</li>
+</ul>
+<h2 id="numpy中where函数httpswwwzhihucomquestion62844162"><a href="https://www.zhihu.com/question/62844162">Numpy中where()函数</a></h2>
+<h4 id="npwherecondition-x-y"><code>np.where(condition, x, y)</code></h4>
+<p>满足条件condition，输出x，不满足输出y</p>
+<h4 id="npwherecondition"><code>np.where(condition)</code></h4>
+<p>只有条件condition，没有x和y，则输出满足条件元素的坐标。这里的坐标以tuple的形式给出，通常原数组有多少维，则输出的tuple中就包含几个数组，分别对应符合条件元素的各维坐标</p>
+<h2 id="numpy-中clip函数">Numpy 中clip()函数</h2>
+<p><code>numpy.clip(a, a_min, a_max, out=None)[source]</code></p>
+<p><code>clip()</code>函数将数组中的元素限制在<code>a_min</code>和<code>a_max</code>之间。</p>
+<h2 id="nprandomrandomstatehttpsblogcsdnnetwqh_jingsongarticledetails77891164"><a href="https://blog.csdn.net/wqh_jingsong/article/details/77891164">np.random.RandomState</a></h2>
+<ul>
+<li>numpy.random.RandomState( int num) 是随机数产生的器的种子，里面的数字相同则产生的随机数相同。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">r <span style="color:#f92672">=</span> numpy<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>RandomState(<span style="color:#ae81ff">2333</span>)
+len <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>int(r<span style="color:#f92672">.</span>normal(loc, scale, size))
+<span style="color:#75715e"># loc是此概率分布的均值</span>
+<span style="color:#75715e"># scale是标准差（对应于分布的宽度，scale越大越矮胖，scale越小越瘦高）</span>
+<span style="color:#75715e"># size输出的是shape，默认为None，只输出一个值</span>
+<span style="color:#75715e"># np.random.randn(size)是标准正态分布</span>
+indices <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">100</span>)
+r<span style="color:#f92672">.</span>shuffle(indices)
+</code></pre></div><ul>
+<li>numpy.random.seed() 与 numpy.random.RandomState() 之间的区别在于随机数种子seed只有一次有效，在下一次调用产生随机数的时候如果没有设置seed，则还是产生随机数。</li>
+</ul>
+<h2 id="argparse-module">argparse module</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> argparse
+
+parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;This is a test of argparse module! &#39;</span>)
+parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--epochs&#39;</span>, type<span style="color:#f92672">=</span>int, default<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>, metavar<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;N&#39;</span>,
+					help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;number of epochs to train (default: 10)&#39;</span>)
+parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--no-cuda&#39;</span>, action<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;store_true&#39;</span>, default<span style="color:#f92672">=</span>False,
+					help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;disable CUDA training&#39;</span>)
+
+args <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+	<span style="color:#66d9ef">print</span> args<span style="color:#f92672">.</span>epochs
+</code></pre></div><ul>
+<li>
+<p>互斥参数示例</p>
+<ul>
+<li>定义互斥的选项是选项分组特性的一个特例，使用<code>add_mutually_exclusive_group()</code>而不是<code>add_argument_group()</code>。示例如下：</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> argparse
+  
+parse <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser()
+group <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>add_mutually_exclusive_group()
+group<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;-a&#39;</span>, action<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;store_true&#39;</span>)
+group<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;-b&#39;</span>, action<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;store_true&#39;</span>)
+  
+<span style="color:#66d9ef">print</span> parser<span style="color:#f92672">.</span>parse_args()
+</code></pre></div></li>
+<li>
+<p>参考内容：</p>
+<ul>
+<li><a href="http://www.361way.com/argparse/5546.html">python命令行选项模块</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="python-基本数据类型-set">Python 基本数据类型 Set</h2>
+<p>set是一个无序且不重复的元素集合，使用不重复的特性可以去除list中所有重复的元素，但是要注意得到的list是无序的，所以里面元素的位置会改变</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># nums是包含重复元素的list </span>
+NoneDuplicate <span style="color:#f92672">=</span> list(set(nums))
+</code></pre></div><h2 id="python数据类型-列表数组矩阵">Python数据类型 列表、数组、矩阵</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 矩阵不是一维的</span>
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+listA <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>]]
+arrayA <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(listA)  <span style="color:#75715e"># list --&gt; array</span>
+matA <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>mat(listA)      <span style="color:#75715e"># list --&gt; mat</span>
+listA_array <span style="color:#f92672">=</span> arrayA<span style="color:#f92672">.</span>tolist()  <span style="color:#75715e"># array --&gt; list</span>
+listA_mat <span style="color:#f92672">=</span> matA<span style="color:#f92672">.</span>tolist()  <span style="color:#75715e"># mat --&gt; list</span>
+<span style="color:#75715e"># 若矩阵为一维的，则在转换成列表的时候使用tolist()[0]</span>
+listA <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>]
+matA <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>mat(listA)  <span style="color:#75715e"># list --&gt; mat</span>
+matA
+<span style="color:#75715e"># 输出</span>
+matrix([[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>]])  
+listA2 <span style="color:#f92672">=</span> matA<span style="color:#f92672">.</span>tolist()  <span style="color:#75715e"># mat --&gt; list</span>
+listA2
+<span style="color:#75715e"># 输出</span>
+[[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>]]
+listA2_2 <span style="color:#f92672">=</span> matA<span style="color:#f92672">.</span>tolist()[<span style="color:#ae81ff">0</span>]  <span style="color:#75715e"># mat --&gt; list</span>
+listA2_2
+<span style="color:#75715e"># 输出</span>
+[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>]
+</code></pre></div><h2 id="from-__future__-import-print_function用法">from _<em>future</em>_ import print_function用法</h2>
+<ul>
+<li>在开头加上<code>from __future__ import print_function</code>这句话后，即使在python2.x，使用print就得像python3.x那样加括号使用。</li>
+<li>如果某个版本中出现了某个新的功能特性，而且这个特性和当前版本中使用的不兼容，也就是它在当前版本中不是语言标准，那么我如果想要使用的话就要从future模块导入</li>
+</ul>
+<h2 id="python文件读写">Python文件读写</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">try</span>:
+    <span style="color:#66d9ef">with</span> open(file_abs, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+        <span style="color:#66d9ef">print</span> (f<span style="color:#f92672">.</span>read())
+<span style="color:#66d9ef">finally</span>:
+    <span style="color:#66d9ef">if</span> f:
+        f<span style="color:#f92672">.</span>close()
+</code></pre></div><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>以只读方式打开文件，文件的指针将会放在文件的开头。这是默认模式。</td>
+</tr>
+<tr>
+<td>w</td>
+<td>打开一个文件用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件</td>
+</tr>
+<tr>
+<td>a</td>
+<td>打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>读取文件内容
+<ul>
+<li><code>read()</code>函数会一次性读取文件的全部内容</li>
+<li><code>read(size)</code>方法每次最多读取size个字节的内容</li>
+<li><code>readline()</code>每次读取一行内容</li>
+<li><code>readlines()</code>可以一次读取所有内容并按行返回list</li>
+</ul>
+</li>
+<li>写入内容
+<ul>
+<li><code>wirte()</code>函数会在文件中写入内容，具体方式由<code>r,w,a</code>来确定</li>
+</ul>
+</li>
+</ul>
+<h2 id="python中classmethod-staticmethod区别">Python中@classmethod @staticmethod区别</h2>
+<p>Python中有3中方式定义类方法：常规方法、@classmethod修饰方式、@staticmethod修饰方式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>(object):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>(self, x):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;executing foo(</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">)&#39;</span><span style="color:#f92672">%</span> (self, x))
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;self:&#39;</span>,self)
+    <span style="color:#a6e22e">@classmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">class_foo</span>(cls, x):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;executing class_foo(</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">)&#39;</span><span style="color:#f92672">%</span>(cls, x))
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;cls:&#39;</span>,cls)
+    <span style="color:#a6e22e">@staticmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">static_foo</span>(x):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;executing static_foo(</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">)&#39;</span> <span style="color:#f92672">%</span> x)
+a <span style="color:#f92672">=</span> A()
+</code></pre></div><ol>
+<li>
+<p>定义方式</p>
+<ul>
+<li>普通的类方法foo()需要通过self参数隐式地传递当前类对象的实例。@classmethod修饰的方法class_foo()需要通过cls参数传递当前类对象。@statcimethod修饰的方法定义与普通函数是一样的。</li>
+<li>其中self和cls的区别不是强制的，只是PEP8中的一种编程风格，self通常用作实例方法的第一参数，cls通常作类方法的第一参数。即通常用self来传递当前类对象的实例，cls传递当前类对象。</li>
+</ul>
+</li>
+<li>
+<p>绑定对象</p>
+<ul>
+<li>foo方法绑定对象A的实例，class_foo方法绑定对象A，static_foo没有参数绑定</li>
+</ul>
+</li>
+<li>
+<p>调用方式</p>
+<ul>
+<li>foo可通过实例a调用，类对象A直接调用会参数错误</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a<span style="color:#f92672">.</span>foo(<span style="color:#ae81ff">1</span>)
+A<span style="color:#f92672">.</span>foo(<span style="color:#ae81ff">1</span>) <span style="color:#75715e"># 会报错</span>
+   
+<span style="color:#75715e"># foo方法也可以显式地传递实例参数a</span>
+A<span style="color:#f92672">.</span>foo(a, <span style="color:#ae81ff">1</span>)
+</code></pre></div><ul>
+<li>class_foo通过类对象或对象实例调用</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">A<span style="color:#f92672">.</span>class_foo(<span style="color:#ae81ff">1</span>)
+a<span style="color:#f92672">.</span>class_foo(<span style="color:#ae81ff">1</span>)
+</code></pre></div><ul>
+<li>static_foo通过类对象或对象实例调用</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">A<span style="color:#f92672">.</span>static_foo(<span style="color:#ae81ff">1</span>)
+a<span style="color:#f92672">.</span>static_foo(<span style="color:#ae81ff">1</span>)
+</code></pre></div></li>
+</ol>
+<p>参考：</p>
+<p><a href="https://www.cnblogs.com/elie/p/5876210.html">python中@classmethod @staticmethod区别</a></p>
+<h2 id="python-split-ospathsplit和ospathsplitext函数">Python split(), os.path.split()和os.path.splitext()函数</h2>
+<ol>
+<li>
+<p><code>os.path.join()</code>将分离的部分合成一个整体</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+filename <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#39;/home/xueyiming&#39;</span>, <span style="color:#e6db74">&#39;caffe&#39;</span>)
+<span style="color:#66d9ef">print</span> filename
+<span style="color:#75715e"># 输出为&#39;/home/xueyiming/caffe&#39;</span>
+</code></pre></div></li>
+<li>
+<p><code>os.path.splitext()</code>将文件名和拓展名分开</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+fname, fename <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(<span style="color:#e6db74">&#39;/home/xueyiming/caffe/1.txt&#39;</span>)
+<span style="color:#66d9ef">print</span> fname <span style="color:#75715e"># 输出为&#39;/home/xueyiming/caffe/1&#39;</span>
+<span style="color:#66d9ef">print</span> fename <span style="color:#75715e"># 输出为&#39;.txt&#39;</span>
+</code></pre></div></li>
+<li>
+<p><code>os.path.split()</code>返回文件的路径和文件名</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+dirname, filename <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;/home/xueyiming/caffe/1.txt&#39;</span>)
+<span style="color:#66d9ef">print</span> dirname <span style="color:#75715e"># 输出&#39;/home/xueyiming/caffe&#39;</span>
+<span style="color:#66d9ef">print</span> filename <span style="color:#75715e"># 输出&#39;1.txt&#39;</span>
+</code></pre></div></li>
+<li>
+<p><code>split()</code>函数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># string.split(str=&#39;&#39;, num=string.count(str))[n]</span>
+<span style="color:#75715e"># str是分隔符，默认为所有空字符，包括空格、换行(\n)、制表符(\t)等</span>
+<span style="color:#75715e"># num是分割次数</span>
+<span style="color:#75715e"># [n]是选取第n个分片</span>
+   
+string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello.world.python&#34;</span> 
+<span style="color:#66d9ef">print</span> string<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>) <span style="color:#75715e"># 输出为：[&#39;hello&#39;, &#39;world&#39;, &#39;python&#39;] </span>
+<span style="color:#66d9ef">print</span>(string<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>,<span style="color:#ae81ff">1</span>)) <span style="color:#75715e"># 输出为：[&#39;hello&#39;, &#39;world.python&#39;] </span>
+<span style="color:#66d9ef">print</span>(string<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>,<span style="color:#ae81ff">1</span>)[<span style="color:#ae81ff">0</span>]) <span style="color:#75715e"># 输出为：hello </span>
+<span style="color:#66d9ef">print</span>(string<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>,<span style="color:#ae81ff">1</span>)[<span style="color:#ae81ff">1</span>]) <span style="color:#75715e"># 输出为：world.python </span>
+string2<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hello&lt;python.world&gt;and&lt;c++&gt;end&#34;</span> 
+<span style="color:#66d9ef">print</span>(string2<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;&lt;&#34;</span>,<span style="color:#ae81ff">2</span>)[<span style="color:#ae81ff">2</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;&gt;&#34;</span>)[<span style="color:#ae81ff">0</span>]) <span style="color:#75715e"># 输出为：c++</span>
+</code></pre></div></li>
+</ol>
+<h2 id="python中oswalk的用法">Python中os.walk的用法</h2>
+<p><code>os.walk(top, topdown=True, onerroe=None, followlinks=False)</code></p>
+<ul>
+<li><code>top</code>是要遍历的目录地址</li>
+<li><code>topdown</code>为真则优先遍历top目录</li>
+<li><code>onerror</code>需要一个callable对象，当walk需要异常时会调用</li>
+<li><code>followlinks</code>为真则会遍历目录下的快捷方式（linux下是symbolic link）</li>
+</ul>
+<p><code>os.walk</code>的返回值是一个生成器(generator)，需要不断遍历它来获得所有内容。每次遍历的对象都是返回的一个三元组(root, dirs, files)</p>
+<ul>
+<li><code>root</code>指的是当前正在遍历的这个文件夹的本身地址</li>
+<li><code>dirs</code>是list类型，存放该文件夹中所有的目录的名字（不包括子目录）</li>
+<li><code>files</code>是list类型，存放该文件夹中所有的文件（不包括子目录）</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 如果有如下文件结构</span>
+<span style="color:#75715e">#       a -&gt;   b   -&gt;   1.txt,  2.txt</span>
+<span style="color:#75715e">#              c   -&gt;   3.txt</span>
+<span style="color:#75715e">#              d   -&gt;   </span>
+<span style="color:#75715e">#            4.txt</span>
+<span style="color:#75715e">#            5.txt</span>
+
+<span style="color:#66d9ef">for</span> (root, dirs, files) <span style="color:#f92672">in</span> os<span style="color:#f92672">.</span>walk(<span style="color:#e6db74">&#39;a&#39;</span>): 
+    <span style="color:#75715e">#第一次运行时，当前遍历目录为 a </span>
+    <span style="color:#960050;background-color:#1e0010">所以</span> root <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;a&#39;</span> 
+        dirs <span style="color:#f92672">==</span> [ <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>] 
+        files <span style="color:#f92672">==</span> [ <span style="color:#e6db74">&#39;4.txt&#39;</span>, <span style="color:#e6db74">&#39;5.txt&#39;</span>] 
+    
+    <span style="color:#960050;background-color:#1e0010">。。。</span> 
+    
+    <span style="color:#75715e"># 接着遍历 dirs 中的每一个目录 </span>
+    b: root <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">b&#39;</span> 
+       dirs <span style="color:#f92672">=</span> [] 
+       files <span style="color:#f92672">=</span> [ <span style="color:#e6db74">&#39;1.txt&#39;</span>, <span style="color:#e6db74">&#39;2.txt&#39;</span>] 
+        
+    <span style="color:#75715e"># dirs为空，返回 </span>
+    <span style="color:#75715e"># 遍历c </span>
+    c: root <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">c&#39;</span> 
+       dirs <span style="color:#f92672">=</span> [] 
+       files <span style="color:#f92672">=</span> [ <span style="color:#e6db74">&#39;3.txt&#39;</span> ] 
+        
+    <span style="color:#75715e"># PS : 如果想获取文件的全路径，只需要 </span>
+    <span style="color:#66d9ef">for</span> f <span style="color:#f92672">in</span> files: 
+        path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(root,f) 
+    
+    <span style="color:#75715e"># 遍历d </span>
+    d: root <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">b&#39;</span> 
+        dirs <span style="color:#f92672">=</span> [] 
+        files <span style="color:#f92672">=</span> [] 
+    
+    <span style="color:#75715e"># 遍历完毕，退出循环</span>
+</code></pre></div><h1 id="caffe使用python接口">Caffe使用python接口</h1>
+<h2 id="caffe中数据保存及调用">caffe中数据保存及调用</h2>
+<h3 id="solvernetblobs">solver.net.blobs</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># solver.net.blobs为一个字典的数据类型，里面的key值为各个layer的名字，value为caffe的blob块</span>
+solver<span style="color:#f92672">.</span>net<span style="color:#f92672">.</span>blobs
+<span style="color:#75715e"># 输出</span>
+orderedDict([(<span style="color:#e6db74">&#39;data&#39;</span>, <span style="color:#f92672">&lt;</span>caffe<span style="color:#f92672">.</span>_caffe<span style="color:#f92672">.</span>Blob at <span style="color:#ae81ff">0x7f7bde968398</span><span style="color:#f92672">&gt;</span>),
+             (<span style="color:#e6db74">&#39;label&#39;</span>, <span style="color:#f92672">&lt;</span>caffe<span style="color:#f92672">.</span>_caffe<span style="color:#f92672">.</span>Blob at <span style="color:#ae81ff">0x7f7bde968488</span><span style="color:#f92672">&gt;</span>),
+             (<span style="color:#e6db74">&#39;conv1&#39;</span>, <span style="color:#f92672">&lt;</span>caffe<span style="color:#f92672">.</span>_caffe<span style="color:#f92672">.</span>Blob at <span style="color:#ae81ff">0x7f7bde968578</span><span style="color:#f92672">&gt;</span>),
+             (<span style="color:#e6db74">&#39;pool1&#39;</span>, <span style="color:#f92672">&lt;</span>caffe<span style="color:#f92672">.</span>_caffe<span style="color:#f92672">.</span>Blob at <span style="color:#ae81ff">0x7f7bde968e60</span><span style="color:#f92672">&gt;</span>),
+             (<span style="color:#e6db74">&#39;conv2&#39;</span>, <span style="color:#f92672">&lt;</span>caffe<span style="color:#f92672">.</span>_caffe<span style="color:#f92672">.</span>Blob at <span style="color:#ae81ff">0x7f7bde9686e0</span><span style="color:#f92672">&gt;</span>),
+             (<span style="color:#e6db74">&#39;pool2&#39;</span>, <span style="color:#f92672">&lt;</span>caffe<span style="color:#f92672">.</span>_caffe<span style="color:#f92672">.</span>Blob at <span style="color:#ae81ff">0x7f7bde968cf8</span><span style="color:#f92672">&gt;</span>),
+             (<span style="color:#e6db74">&#39;ip1&#39;</span>, <span style="color:#f92672">&lt;</span>caffe<span style="color:#f92672">.</span>_caffe<span style="color:#f92672">.</span>Blob at <span style="color:#ae81ff">0x7f7bde968c80</span><span style="color:#f92672">&gt;</span>),
+             (<span style="color:#e6db74">&#39;ip2&#39;</span>, <span style="color:#f92672">&lt;</span>caffe<span style="color:#f92672">.</span>_caffe<span style="color:#f92672">.</span>Blob at <span style="color:#ae81ff">0x7f7bde968c08</span><span style="color:#f92672">&gt;</span>),
+             (<span style="color:#e6db74">&#39;loss&#39;</span>, <span style="color:#f92672">&lt;</span>caffe<span style="color:#f92672">.</span>_caffe<span style="color:#f92672">.</span>Blob at <span style="color:#ae81ff">0x7f7bde968b90</span><span style="color:#f92672">&gt;</span>)])
+<span style="color:#75715e"># 我们可以通过key（即layer的名字）来访问Blob中的内容，通过查看Blob块的源码会发现里面有data，</span>
+<span style="color:#75715e"># diff，count等内容</span>
+<span style="color:#75715e">#　以conv1为例，访问conv1的输出数据：</span>
+solver<span style="color:#f92672">.</span>net<span style="color:#f92672">.</span>blobs[<span style="color:#e6db74">&#39;conv1&#39;</span>]<span style="color:#f92672">.</span>data
+solver<span style="color:#f92672">.</span>net<span style="color:#f92672">.</span>blobs[<span style="color:#e6db74">&#39;conv1&#39;</span>]<span style="color:#f92672">.</span>diff
+<span style="color:#75715e"># 访问conv1的数据结构：</span>
+sovler<span style="color:#f92672">.</span>net<span style="color:#f92672">.</span>blobs[<span style="color:#e6db74">&#39;conv1&#39;</span>]<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>shape
+solver<span style="color:#f92672">.</span>net<span style="color:#f92672">.</span>blobs[<span style="color:#e6db74">&#39;conv1&#39;</span>]<span style="color:#f92672">.</span>diff<span style="color:#f92672">.</span>shape
+<span style="color:#75715e"># 此外，还可以通过reshape(), transpose()等操作对它们变形，类似对数组的操作</span>
+</code></pre></div><h3 id="solvernetparams">solver.net.params</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 查看各层的参数值，其中k表示层的名称，v[0].data就是各层的W值，而v[1].data是各层的b值。</span>
+<span style="color:#75715e"># 注意并不是所有层都有参数，只有卷积层和全连接层才有</span>
+[(k,v[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>data) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> net<span style="color:#f92672">.</span>params<span style="color:#f92672">.</span>items()]
+<span style="color:#75715e"># 不查看具体值，只查看shape</span>
+[(k,v[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>shape) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> net<span style="color:#f92672">.</span>params<span style="color:#f92672">.</span>items()]
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># solver.net.params也是一个字典的数据类型，里面放的是与连接权值及偏置相关的数据。key值为layer的名字，value为caffe的blob块</span>
+solver<span style="color:#f92672">.</span>net<span style="color:#f92672">.</span>forward()
+<span style="color:#75715e"># 输出：</span>
+solver<span style="color:#f92672">.</span>net<span style="color:#f92672">.</span>params
+orderedDict([ (<span style="color:#e6db74">&#39;conv1&#39;</span>, <span style="color:#f92672">&lt;</span>caffe<span style="color:#f92672">.</span>_caffe<span style="color:#f92672">.</span>BlobVec at <span style="color:#ae81ff">0x7f7bffd68578</span><span style="color:#f92672">&gt;</span>),
+              (<span style="color:#e6db74">&#39;conv2&#39;</span>, <span style="color:#f92672">&lt;</span>caffe<span style="color:#f92672">.</span>_caffe<span style="color:#f92672">.</span>BlobVec at <span style="color:#ae81ff">0x7f7bde9ff6e0</span><span style="color:#f92672">&gt;</span>),
+              (<span style="color:#e6db74">&#39;ip1&#39;</span>, <span style="color:#f92672">&lt;</span>caffe<span style="color:#f92672">.</span>_caffe<span style="color:#f92672">.</span>BlobVec at <span style="color:#ae81ff">0x7f7bde968f80</span><span style="color:#f92672">&gt;</span>),
+              (<span style="color:#e6db74">&#39;ip2&#39;</span>, <span style="color:#f92672">&lt;</span>caffe<span style="color:#f92672">.</span>_caffe<span style="color:#f92672">.</span>BlobVec at <span style="color:#ae81ff">0x7f7bde968408</span><span style="color:#f92672">&gt;</span>)])
+<span style="color:#75715e"># 接下来，可以访问Blob块中的内容了，以conv1为例：</span>
+solver<span style="color:#f92672">.</span>net<span style="color:#f92672">.</span>params[<span style="color:#e6db74">&#39;conv1&#39;</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>data <span style="color:#75715e"># 存放的为与连接权值相关的数据</span>
+sovler<span style="color:#f92672">.</span>net<span style="color:#f92672">.</span>params[<span style="color:#e6db74">&#39;conv1&#39;</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>diff
+solver<span style="color:#f92672">.</span>net<span style="color:#f92672">.</span>params[<span style="color:#e6db74">&#39;conv1&#39;</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>data <span style="color:#75715e"># 存放的为与连接偏置相关的数据、导数等</span>
+<span style="color:#75715e"># 同样也可以通过对它们进行shape(), reshape(), transpose()等操作</span>
+</code></pre></div><h2 id="常用操作">常用操作</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 完整进行一次权值更新</span>
+solver<span style="color:#f92672">.</span>step(<span style="color:#ae81ff">1</span>)
+<span style="color:#75715e"># 使用python接口运行caffe的时候，可以控制它的Loop过程，然后跟踪很多变量，实现自己的功能</span>
+</code></pre></div><p>参考文献：</p>
+<p><a href="https://www.cnblogs.com/yinheyi/p/6062488.html">caffe中python接口的使用</a></p>
+<h2 id="nhwc---nchw">NHWC -&gt; NCHW</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">train_data <span style="color:#f92672">=</span> train_data<span style="color:#f92672">.</span>swapaxes(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>)<span style="color:#f92672">.</span>swapaxes(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>)
+</code></pre></div><h1 id="python处理mnist数据集">Python处理mnist数据集</h1>
+<p>参考文献：</p>
+<p><a href="https://blog.csdn.net/han____shuai/article/details/69939623">读取 mnist 数据集 &mdash; python</a></p>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

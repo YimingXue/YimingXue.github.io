@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://YimingXue.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://YimingXue.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <h1 id="docker结合深度学习框架httpsblogcsdnnetbskfnvjtlyzmv867articledetails81017226"><a href="https://blog.csdn.net/bskfnvjtlyzmv867/article/details/81017226">Docker结合深度学习框架</a></h1>
+<h2 id="安装指定版本docker-ce">安装指定版本Docker CE</h2>
+<p>下面这两种方法都可以用来安装Docker CE：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">plan A：
+sudo apt install curl
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+echo <span style="color:#e6db74">&#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial edge&#34;</span> | sudo tee /etc/apt/sources.list.d/docker.list
+sudo apt-get update <span style="color:#f92672">&amp;&amp;</span> sudo apt-get install -y docker-ce<span style="color:#f92672">=</span>18.03.1~ce-0~ubuntu
+
+plan B：
+sudo apt install curl
+curl -fsSL get.docker.com -o get-docker.sh
+sudo sh get-docker.sh --mirror Aliyun
+</code></pre></div><h3 id="启动docker-ce">启动Docker CE</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo systemctl enable docker
+sudo systemctl start docker
+<span style="color:#75715e"># 重新启动docker命令（没有需要不用执行）</span>
+sudo systemctl restart docker
+</code></pre></div><h3 id="建立docker用户组">建立docker用户组</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 建立docker组</span>
+sudo groupadd docker
+<span style="color:#75715e"># 将当前用户加入docker组</span>
+sudo usermod -aG docker $USER
+</code></pre></div><h2 id="安装nvidia-docker2">安装Nvidia Docker2</h2>
+<p><a href="https://github.com/NVIDIA/nvidia-docker">Nvidia Docker2项目的主页 </a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers</span>
+ocker volume ls -q -f driver<span style="color:#f92672">=</span>nvidia-docker | xargs -r -I<span style="color:#f92672">{}</span> -n1 docker ps -q -a -f volume<span style="color:#f92672">={}</span> | xargs -r docker rm -f
+sudo apt-get purge -y nvidia-docker
+
+<span style="color:#75715e"># Add the package repositories</span>
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu16.04/amd64/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+<span style="color:#75715e"># Install nvidia-docker2 and reload the Docker daemon configuration</span>
+sudo apt-get update <span style="color:#f92672">&amp;&amp;</span> sudo apt-get install -y nvidia-docker2
+sudo pkill -SIGHUP dockerd
+
+<span style="color:#75715e"># Test nvidia-smi with the latest official CUDA image</span>
+docker run --runtime<span style="color:#f92672">=</span>nvidia --rm nvidia/cuda nvidia-smi
+</code></pre></div><h3 id="拉取镜像">拉取镜像</h3>
+<p>Nvidia官网在Docker Hub中提供了关于深度学习的各个版本环境 ，<a href="https://hub.docker.com/r/nvidia/cuda/">传送门</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 拉取镜像 镜像名：Tag</span>
+docker pull nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
+<span style="color:#75715e"># 查看镜像</span>
+docker images -a
+</code></pre></div><h3 id="创建启动容器">创建启动容器</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -it --name MIForest_container -v /home/xueyiming/Docker_MIForest/:/home/xueyiming/Docker_MIForest --runtime<span style="color:#f92672">=</span>nvidia -e NVIDIA_VISIBLE_DEVICE<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
+<span style="color:#75715e"># 查看cudnn版本</span>
+cd /usr/lib/x86_64-linux-gun/
+ll | grep cudnn
+</code></pre></div><h3 id="构建代码运行环境">构建代码运行环境</h3>
+<p>在下面执行到<code>pip --no-cache-dir install -U scikit-image</code>时，会遇到报错<code>pip --no-cache-dir install -U scikit-image</code>，参考<a href="https://blog.csdn.net/tintinetmilou/article/details/80091630">pip Import Error:cannot import name main解决方案</a>，只需要查看文件<code>/usr/bin/pip</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pip <span style="color:#f92672">import</span> main
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    sys<span style="color:#f92672">.</span>exit(main())
+</code></pre></div><p>修改成：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pip <span style="color:#f92672">import</span> __main__
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    sys<span style="color:#f92672">.</span>exit(__main__<span style="color:#f92672">.</span>_main())
+</code></pre></div><p>如果遇到<code>Command &quot;python setup.py egg_info&quot; failed with error code 1 in /tmp/pip-install-yJ07yU/networkx/</code>，那么执行<code>pip install --upgrade setuptools</code>即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 更新软件包管理器中的软件列表，否则无法正常下载所需软件</span>
+apt-get update
+<span style="color:#75715e"># 安装Python2.7及代码运行所需环境</span>
+apt-get install --no-install-recommends -y python python-dev python-pip git vim libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler libboost-all-dev libopenblas-dev liblapack-dev libatlas-base-dev libopenblas-dev liblapack-dev libatlas-base-dev libopenblas-dev liblapack-dev libatlas-base-dev wget libgflags-dev libgoogle-glog-dev liblmdb-dev zip unzip cmake rpm yum alien
+apt-get clean
+<span style="color:#75715e"># 安装深度学习框架Caffe (这些其实是caffe/python/requirments.txt中需要安装的python库)</span>
+pip --no-cache-dir install -U scikit-image 
+pip --no-cache-dir install Cython numpy scipy scikit-image matplotlib ipython h5py leveldb networkx nose pandas python-dateutil protobuf python-gflags pyyaml Pillow six sklearn
+</code></pre></div><h2 id="docker使用指南">Docker使用指南</h2>
+<h3 id="容器的基操">容器的基操</h3>
+<h4 id="普通容器">普通容器</h4>
+<ul>
+<li>
+<p>**启动一次性操作容器：**<code>docker run IMAGE_NAME [COMMAND][ARG...]</code></p>
+<p>==一次性操作容器在处理完操作后会立即关闭容器==。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run nvidia/cuda8.0-cudnn5-devel-ubuntu16.04 echo <span style="color:#e6db74">&#39;hello world&#39;</span>
+</code></pre></div></li>
+<li>
+<p>**启动交互式容器：**<code>docker run -t -i --name=自定义名称 IMAGE_NAME /bin/bash</code></p>
+<p>-i &ndash;interactive=true | false，默认是false</p>
+<p>-t &ndash;tty=true | false，默认是false</p>
+<p>&ndash;name 给启动的容器自定义名称，方便后续的容器选择操作</p>
+<p>启动交互式容器，就是类似虚拟机、云主机的操作方式，==操作完一个命令后仍然可以继续操作==。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -i -t --name MIForest_container nvidia/cuda8.0-cudnn5-devel-ubuntu16.04 /bin/bash
+</code></pre></div><p>需要使用到cuda的时候，需要建立一个可以使用GPU的docker，命令如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -it --name 自定义容器名 -v /home/你的用户名/mnist/:/home/你的用户名/mnist/ --runtime<span style="color:#f92672">=</span>nvidia -e NVIDIA_VISIBLE_DEVICE<span style="color:#f92672">=</span>0,1 nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
+</code></pre></div><p><code>NVIDIA_VISIBLE_DEVICE</code>参数指定对容器分配几块GPU资源；<code>-v</code>参数用于挂载本地目录，冒号前为宿主机目录，冒号后为容器目录，两个可以设置为一样比较方便代码书写。配置目录挂载是为了方便本文下一部分测试Mnist服务。容器启动完毕，此时，可以像正常本机配置的深度学习环境一样，测试各个软件的版本。</p>
+</li>
+<li>
+<p>**查看容器：**<code>docker ps [-a][-l]</code></p>
+<p>省略参数，列出所有正在运行的容器</p>
+<p>-a all，列出所有容器</p>
+<p>-l latest，列出最近的容器</p>
+</li>
+<li>
+<p>**查看指定容器：**<code>docker inspect name|id</code></p>
+<p>name，指定具体容器名称</p>
+<p>id，容器唯一id标识</p>
+<p>inspect命令可以详细地展示出容器的具体信息。</p>
+</li>
+<li>
+<p>**重新启动停止的容器：**<code>docker start[-i] 容器名</code></p>
+<p>实际使用时，没必要每次都重新启动一个新的容器，我们可以重新启动之前创建的容器，现实情况也需要我们这样使用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker start -i MIForest_container
+</code></pre></div></li>
+<li>
+<p>**删除停止的容器：**<code>docker rm name|id</code></p>
+</li>
+</ul>
+<h4 id="守护式容器">守护式容器</h4>
+<p>交互式容器在运行完命令退出后即停止，而实际中我们常常需要能够长时间运行，即使退出也能后台运行的容器，而守护式容器具备这一功能。守护式容器具有以下特点：能够长期运行；没有交互式会话；适合于运行应用程序和服务。</p>
+<ul>
+<li>
+<p><strong>以守护形式运行容器</strong></p>
+<p>不使用exit退出，使用Ctrl+P 或 Ctrl+Q，以守护形式退出容器。、</p>
+</li>
+<li>
+<p>**再次进入运行中的容器：**<code>docker attach name|id</code></p>
+</li>
+<li>
+<p>**启动守护式容器：**<code>docker run -d IMAGE_NAME [COMMAND][ARG...]</code></p>
+<p>当命令在后台执行完成后，容器还是会关闭的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --name MIForest_container -d nvidia/cuda8.0-cudnn5-devel-ubuntu16.04 -c <span style="color:#e6db74">&#34;while true; do echo hello world; sleep 1; done&#34;</span>
+</code></pre></div></li>
+<li>
+<p>**查看容器日志：**<code>docker logs [-f][-t][--tail] 容器名</code></p>
+<p>-f &ndash;follows=true|false，默认是false，显示更新</p>
+<p>-t &ndash;timestamps=true|false，默认是false，显示时间戳</p>
+<p>&ndash;tail=“all”|行数，显示最新行数的日志</p>
+</li>
+<li>
+<p>**查看容器内进程：**<code>docker top 容器名</code></p>
+</li>
+<li>
+<p>**运行中的容器启动新进程：**<code>docker exec [-d][-i][-t] IMAGE_NAME [COMMAND][ARG...]</code></p>
+<p>Docker的理念是一个容器运行一个服务，但是往往需要对一个服务进行监控，所以也需要在已经运行服务的容器启动新的进程。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker exec -i -t MIForest_container /bin/bash
+</code></pre></div></li>
+<li>
+<p><strong>停止守护式容器</strong></p>
+<p>发送信号停止容器：<code>docker stop 容器名</code></p>
+<p>强制停止：<code>docker kill 容器名</code></p>
+</li>
+</ul>
+<h3 id="镜像基操">镜像基操</h3>
+<h4 id="查看删除镜像">查看/删除镜像</h4>
+<ul>
+<li>
+<p>**列出镜像：**<code>docker images [OPTIONS][REPOSITORY]</code></p>
+<p>-a &ndash;all=false，显示所有镜像</p>
+<p>-f &ndash;filter=[]，根据过滤条件显示</p>
+<p>&ndash;no-trunc=false，指定不使用截断的形式显示数据</p>
+<p>-q  &ndash;quiet=false，只显示镜像的唯一id</p>
+</li>
+<li>
+<p>**查看镜像：**<code>docker inspect [OPTIONS] CONTAINER|IMAGE [CONTAINER|IMAGE]</code></p>
+<p>-f &ndash;format=&rdquo;&quot;， 根据过滤条件显示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker inspect MIForest_container
+</code></pre></div></li>
+<li>
+<p>**删除镜像：**<code>docker rmi [OPTIONS] IMAGES [IMAGE]</code></p>
+<p>-f &ndash;force=false，强制删除镜像</p>
+<p>&ndash;no-prune=false，保留未打标签的父镜像</p>
+</li>
+<li>
+<p><strong>虚悬镜像</strong></p>
+<p>既没有仓库名，也没有标签，均为\</p>
+</li>
+</ul>
+<h4 id="获取推送镜像">获取推送镜像</h4>
+<ul>
+<li>
+<p>**查找镜像：**<code>docker search [OPTIONS] TEAM</code></p>
+<p>&ndash;automated=false，仅显示自动化构建的镜像</p>
+<p>&ndash;no-trunc=false，不以截断的方式输出</p>
+<p>&ndash;filter，添加过滤条件</p>
+</li>
+<li>
+<p>**拉取镜像：**<code>docker pull [OPTIONS] NAME[:TAG]</code></p>
+<p>-a &ndash;all-tags=false，下载所有的镜像（包含所有TAG）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull ubuntu:16.04
+</code></pre></div></li>
+<li>
+<p>**推送镜像：**<code>docker push NME[:TAG]</code></p>
+<p>Docker允许上传我们自己构建的镜像，需要注册DockerHub的账户。也可以上传到<a href="https://cr.console.aliyun.com/#/namespace/index">阿里云</a>。</p>
+</li>
+</ul>
+<h4 id="构建镜像">构建镜像</h4>
+<p>构建Docker镜像，可以保存对容器的修改，并且再次使用。构建镜像提供了自定义镜像的能力，以软件的形式打包并分发服务及其运行环境。Docker中提供了两种方式来构建镜像：</p>
+<ol>
+<li>通过容器构建：<code>docker commit</code></li>
+<li>通过Dockerfile构建：<code>docker build</code></li>
+</ol>
+<h5 id="使用commit命令构建镜像">使用commit命令构建镜像</h5>
+<p>命令：<code>docker commit [OPTIONS] CONTAINER [REPOSITORY][:TAG]</code></p>
+<p>参数：-a &ndash;author=&rdquo; &ldquo;，指定镜像的作者信息</p>
+<p>-m &ndash;message=&rdquo; &ldquo;，提交信息</p>
+<p>-p &ndash;pause=true，commit时是否暂停该容器</p>
+<p>实例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker commit -a <span style="color:#e6db74">&#34;xueyiming&#34;</span> -m <span style="color:#e6db74">&#34;MIForest environment&#34;</span> MIForest_container xueyiming/miforest1.0
+</code></pre></div><h5 id="使用dockerfile文件构建镜像">使用Dockerfile文件构建镜像</h5>
+<p>Docker允许我们利用一个类似配置文件的形式来进行构建自定义镜像，在文件中可以指定原始的镜像，自定义镜像的维护人信息，对原始镜像采取的操作以及暴露的端口等信息。比如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Sample Dockerfile</span>
+FROM ubuntu:16.04
+MAINTAINER xueyiming <span style="color:#e6db74">&#34;xueyimingshdx@126.com&#34;</span>
+RUN apt-get update
+RUN apt-get install -y nginx
+EXPOSE <span style="color:#ae81ff">80</span>
+</code></pre></div><p>命令：<code>docker build [OPTIONS] DockerFile_PATH|URL|-</code></p>
+<p>参数：&ndash;force-rm=false</p>
+<p>&ndash;no-cache=false</p>
+<p>&ndash;pull=false</p>
+<p>-q quite=false，构建时不输出信息</p>
+<p>&ndash;rm=true</p>
+<p>-t tag=&rdquo; &ldquo;，指定输出的镜像名称信息</p>
+<h4 id="镜像迁移">镜像迁移</h4>
+<h5 id="上传docker-hub">上传Docker Hub</h5>
+<p>首先，需要在<a href="https://hub.docker.com/">Docker Hub</a>上申请注册一个帐号（人机验证时需要科学上网）。然后我们需要创建仓库，指定仓库名称。</p>
+<p>在终端中登录你的Docker Hub账户，输入<code>docker login</code>，输入用户名密码即可登录成功。</p>
+<p>查看需要上传的镜像，并将选择的镜像打上标签，标签名需和Docker Hub上新建的仓库名称一致，否则上传失败。给镜像打标签的命令如下：<code>docker tag &lt;existing-image&gt; &lt;hub-user&gt;/&lt;repo-name&gt;[:&lt;tag&gt;]</code>。其中<code>existing-image</code>代表本地待上传的镜像名加tag，后面<code>&lt;hub-user&gt;/&lt;repo-name&gt;[:&lt;tag&gt;]</code>则是为上传更改的标签名，tag不指定则为latest。例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker tag xueyiming/miforest1.0:latest treenewbee/miforest:v1.0
+</code></pre></div><p>我们重新为ubuntu:16.04的镜像打上标签，观察IMAGE ID可知，==同一镜像可以拥有不同的标签名==。接下来，我们利用<code>push</code>命令直接上传镜像：<code>docker push &lt;hub-user&gt;/&lt;repo-name&gt;:&lt;tag&gt;</code>。例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker push treenewbee/miforest:v1.0
+</code></pre></div><p>至此，我们已经上传成功。由于之前介绍的分层存储系统，我们这里是直接对已有的ubuntu镜像进行上传，只是重新打了标签，所以真正上传的只是变化的部分。</p>
+<h5 id="导出文件互传">导出文件互传</h5>
+<p>Docker 还提供了 <code>docker load</code> 和 <code>docker save</code> 命令，用以将镜像保存为一个tar文件。比如这次我们将xueyiming/miforest1.0:latest这个镜像保存为tar文件。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker save xueyiming/miforest1.0:latest | gzip &gt; miforest_v1.0.tar.gz
+docker load -i miforest_v1.0.tar.gz
+</code></pre></div><h2 id="其他docker相关操作">其他Docker相关操作</h2>
+<h3 id="完全卸载docker">完全卸载Docker</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 卸载Docker CE</span>
+sudo apt-get purge docker-ce
+<span style="color:#75715e"># 卸载Docker EE</span>
+sudo apt-get purge docker-ee
+<span style="color:#75715e"># 删除Docker镜像、容器、数据卷等文件</span>
+sudo rm -rf /var/lib/docker
+</code></pre></div><h3 id="docker删除镜像容器">Docker删除镜像、容器</h3>
+<ul>
+<li>
+<p>删除镜像</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 停止所有的container，这样才能够删除images</span>
+docker stop <span style="color:#66d9ef">$(</span>docker ps -a -q<span style="color:#66d9ef">)</span>
+<span style="color:#75715e"># 查看当前有哪些images</span>
+docker images
+<span style="color:#75715e"># 删除images，通过image的id来指定删除对象</span>
+docker rmi &lt;image_id&gt;
+<span style="color:#75715e"># 若想删除untagged images，即那些id为&lt;None&gt;的image</span>
+docker rmi <span style="color:#66d9ef">$(</span>docker images | grep <span style="color:#e6db74">&#34;^&lt;none&gt;&#34;</span> | awk<span style="color:#e6db74">&#34;{print ￥3}&#34;</span><span style="color:#66d9ef">)</span>
+<span style="color:#75715e"># 若想删除全部images</span>
+docker rmi <span style="color:#66d9ef">$(</span>docker images -q<span style="color:#66d9ef">)</span>
+</code></pre></div></li>
+<li>
+<p>删除容器</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 删除所有container</span>
+docker rm <span style="color:#66d9ef">$(</span>docker ps -a -q<span style="color:#66d9ef">)</span>
+</code></pre></div></li>
+</ul>
+<h3 id="宿主机docker容器的文件传输">宿主机/Docker容器的文件传输</h3>
+<ul>
+<li>
+<p><a href="https://blog.csdn.net/leafage_m/article/details/72082011">使用容器ID全称</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 获取容器短ID或指定的名字</span>
+docker ps -a
+<span style="color:#75715e"># 获取容器ID全称</span>
+docker inspect -f <span style="color:#e6db74">&#39;{{.Id}}&#39;</span> $container_name
+<span style="color:#75715e"># 宿主机传输文件到容器</span>
+docker cp 本地文件路径 ID全称：容器路径
+<span style="color:#75715e"># 容器传输文件的到宿主机</span>
+</code></pre></div></li>
+<li>
+<p><a href="https://blog.csdn.net/Leafage_M/article/details/78575205">使用Volume进行挂载</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 创建一个volume</span>
+docker volume create my-vol
+<span style="color:#75715e"># 查看volume的详细信息</span>
+docker volume inspect my-vol
+<span style="color:#75715e"># 启动一个容器挂载该volume</span>
+docker run -ti --runtime<span style="color:#f92672">=</span>nvidia -v my-vol:/home/xueyiming/my-vol /bin/bash
+</code></pre></div></li>
+</ul>
+<h3 id="dockerfile使用手册">Dockerfile使用手册</h3>
+<p><a href="https://www.jianshu.com/p/690844302df5">Docker之Dockerfile语法详解</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Start with treenewbee/miforest:v4.0</span>
+FROM treenewbee/miforest:v4.0
+MAINTAINER XUEYIMING &lt;xueyimingshdx@126.com&gt;
+
+<span style="color:#75715e"># already install python-pip version10.0.1/ scikit-image/ openve3.1/ vim</span>
+<span style="color:#75715e"># apt-get update</span>
+<span style="color:#75715e"># apt-get install --no-install-recommends -y python-pip vim</span> 
+<span style="color:#75715e"># pip install --upgrade pip</span>
+<span style="color:#75715e"># pip install --upgrade setuptools</span>
+
+RUN apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y --no-install-recommends <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  python <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  python-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  git <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libprotobuf-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libleveldb-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libsnappy-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libopencv-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libhdf5-serial-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  protobuf-compiler <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libboost-all-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libopenblas-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  liblapack-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libatlas-base-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libopenblas-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  liblapack-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libatlas-base-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libopenblas-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  liblapack-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libatlas-base-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  wget <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libgflags-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libgoogle-glog-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  liblmdb-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  zip <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  unzip <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  cmake <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  rpm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  yum <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  alien <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  apt-get clean <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  pip --no-cache-dir install -U scikit-image <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  pip --no-cache-dir install Cython <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  numpy <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  scipy <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  scikit-image <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  matplotlib <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  ipython <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  h5py <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  leveldb <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  networkx <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  nose <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  pandas <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  python-dateutil <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  protobuf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  python-gflags <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  pyyaml <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  Pillow <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  six <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  sklearn
+  
+  
+</code></pre></div>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

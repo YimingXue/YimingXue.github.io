@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://YimingXue.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://YimingXue.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <h1 id="matlab使用记录">Matlab使用记录</h1>
+<h2 id="matlab使用心得">matlab使用心得</h2>
+<ul>
+<li>matlab是按列存储数据的</li>
+<li>matlab中for是一种非常耗时的语句</li>
+</ul>
+<h2 id="matlab中format的使用方法">matlab中format的使用方法</h2>
+<p>针对数据的显示形式控制，matlab中有专用命令format，但该命令不影响数据的储存形式和计算精度</p>
+<p><code>format compact</code>，压缩空格</p>
+<h2 id="matlab中magic方法">matlab中magic方法</h2>
+<p><code>M = magic(n)</code>，生成一个n*n的矩阵，矩阵元素是由整数1到$n^2$组成的并且任意行、任意列的和都相等，阶数n必须是大于等于3的标量</p>
+<h2 id="matlab中自定义函数">matlab中自定义函数</h2>
+<p>注：这种方法要求定义函数必须单独写一个M文件，不能与调用的命令写在同一个M文件中</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-matlab" data-lang="matlab"><span style="color:#75715e">% 自定义函数文件：mylfg.m</span>
+<span style="color:#66d9ef">function</span> y=<span style="color:#a6e22e">mylfg</span>(x) <span style="color:#75715e">% 注意：函数名（mylfg）必须与文件名（mylfg.m）一致</span>
+y=x^(<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">3</span>);
+<span style="color:#66d9ef">end</span>
+</code></pre></div><h2 id="matlab中fprintf函数">matlab中fprintf函数</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-matlab" data-lang="matlab"><span style="color:#75715e">% 打印的结果为the value of pi is 3.14，后面带有一个换行符。转义序列%6.2f代表在本函数中的第一个数据项将占有6个字符宽度，小数点后有2位小数</span>
+<span style="color:#f92672">&gt;&gt;</span> fprintf(<span style="color:#e6db74">&#39;the value of pi is %6.2f\n&#39;</span>,pi)
+the value of pi is  <span style="color:#ae81ff">3.14</span>
+</code></pre></div><h2 id="matlab保存和导入工作区变量mat文件">matlab保存和导入工作区变量mat文件</h2>
+<ul>
+<li>使用<code>save bianld.mat</code>可以保存工作区变量</li>
+<li>使用<code>load bianld.mat</code>可以导入工作区变量</li>
+<li>mat文件名称自定义，使用<code>clear a</code>或<code>clear</code>可以清空工作区指定变量或所有变量</li>
+<li>save(&lsquo;filename&rsquo;, &lsquo;var1&rsquo;, &lsquo;var2&rsquo;, &hellip;)：保存指定的变量在 filename 指定的文件中</li>
+</ul>
+<h2 id="matlab中size函数">matlab中size函数</h2>
+<p>size函数是用来求矩阵的大小的，假设A是一个<code>3x4</code>的二维矩阵</p>
+<ul>
+<li><code>s=size(A)</code>，返回一个行向量s，s的第一个元素是矩阵的行数，第二个元素是矩阵的列数</li>
+<li><code>[r,c]=size(A)</code>，将矩阵A的行数返回到第一个输出变量r，将矩阵的列数返回到第二个输出变量c</li>
+<li><code>r=size(A,1); c=size(A,2)</code>，第一句返回的是矩阵A的行数，第二句返回的是矩阵A的列数</li>
+</ul>
+<h2 id="matlab大段注释的方法">matlab大段注释的方法</h2>
+<ul>
+<li>
+<p>快捷键：<code>Ctrl+R</code>注释，<code>Ctrl+T</code>取消注释</p>
+</li>
+<li>
+<p>采用matlab块注释方法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-matlab" data-lang="matlab"><span style="color:#75715e">%{
+</span><span style="color:#75715e">需要注释的若干语句
+</span><span style="color:#75715e">%}</span>
+</code></pre></div></li>
+</ul>
+<h2 id="matlab中取余">matlab中取余</h2>
+<p><code>mod(5,2)</code>，结果为1</p>
+<h2 id="matlab中reshape函数">matlab中reshape函数</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-matlab" data-lang="matlab"><span style="color:#75715e">% 将A的行列排列成m行n列，注意reshape是按照列取数据的</span>
+A = reshape(A,m,n);
+A = reshape(A,[m,n]);
+</code></pre></div><h2 id="matlab预分配内存">matlab预分配内存</h2>
+<p>对于for，while循环，在循环的过程中每次不断地增加数据结构的大小影响了性能和内存的使用。重复地调整数据的大小需要matlab花费额外的时间寻找更大的连续内存块，并且将现在的数组移动到连续的内存块中。通常可以通过预分配数组所需的最大内存在改善代码的执行时间。</p>
+<p>例：在这段循环中运行速度特别慢，提出警告“变量似乎会随着迭代次数改变而变化，请预分配内存，以提高运行速度”。这种警告经常出现在循环中，主要就是因为变量的长度是变化的，这样会影响计算速度，最好的办法就是预先定义变量的长度。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-matlab" data-lang="matlab"><span style="color:#66d9ef">for</span> i=<span style="color:#ae81ff">1</span>:i_num
+    <span style="color:#66d9ef">for</span> j=<span style="color:#ae81ff">1</span>:j_num
+        pixelmax(count,:)=pic(i,j,:); <span style="color:#75715e">% 取出值对应的值</span>
+        count=count<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><p>参考文献：<a href="https://blog.csdn.net/raby_gyl/article/details/52698967">Matlab预分配内存</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-matlab" data-lang="matlab">pixelmax = zeros(i_num<span style="color:#f92672">*</span>j_num,<span style="color:#ae81ff">103</span>);
+</code></pre></div><p>matlab中mean函数</p>
+<p><code>mean(A)</code>，如果A为向量，则返回值为该向量所有元素的均值；当A为矩阵时，返回值为该矩阵各列向量的均值</p>
+<p><code>mean(A,2)</code>，返回值为该矩阵的各行向量的均值</p>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

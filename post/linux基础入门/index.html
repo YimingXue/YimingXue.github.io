@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://YimingXue.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://YimingXue.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://YimingXue.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <h4 id="进度表">进度表</h4>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 实验1：Linux系统简介</li>
+<li><input checked="" disabled="" type="checkbox"> 实验2：基本概念及操作</li>
+<li><input checked="" disabled="" type="checkbox"> 实验3：用户及文件权限管理</li>
+<li><input checked="" disabled="" type="checkbox"> 实验4：Linux目录结构及文件基本操作</li>
+<li><input disabled="" type="checkbox"> 实验5：环境变量与文件查找</li>
+</ul>
+<h3 id="命令行操作体验">命令行操作体验</h3>
+<h5 id="常用快捷键">常用快捷键</h5>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Ctrl+d</td>
+<td align="center">键盘输入结束或退出终端</td>
+</tr>
+<tr>
+<td align="center">Ctrl+s</td>
+<td align="center">暂停当前程序，暂停后按下任意键恢复运行</td>
+</tr>
+<tr>
+<td align="center">Ctrl+a</td>
+<td align="center">将光标移至输入行头，相当于Home键</td>
+</tr>
+<tr>
+<td align="center">Ctrl+e</td>
+<td align="center">将光标移至输入行末，相当于End键</td>
+</tr>
+<tr>
+<td align="center">Ctrl+k</td>
+<td align="center">删除从光标所在位置到行末</td>
+</tr>
+</tbody>
+</table>
+<h5 id="shell常用通配符">Shell常用通配符</h5>
+<ul>
+<li>
+<ul>
+<li>匹配0或多个字符</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>匹配0或多个字符</td>
+</tr>
+<tr>
+<td>？</td>
+<td>匹配任意一个字符</td>
+</tr>
+<tr>
+<td>[list]</td>
+<td>匹配list中的任意单一字符</td>
+</tr>
+<tr>
+<td>[^list]</td>
+<td>匹配除list中的任意单一字符以外的字符</td>
+</tr>
+<tr>
+<td>{string1, string2, &hellip;}</td>
+<td>匹配string1或string2（或更多）其一字符串</td>
+</tr>
+<tr>
+<td>{c1, &hellip;, c2}</td>
+<td>匹配c1-c2中全部字符，如1..10{}</td>
+</tr>
+</tbody>
+</table>
+<h5 id="输出图形字符命令--banner">输出图形字符命令&ndash;banner</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get update
+sudo apt-get install sysvbanner
+
+banner wanghaojia
+</code></pre></div><h3 id="用户及文件权限管理">用户及文件权限管理</h3>
+<h5 id="创建用户">创建用户</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo adduser lilei <span style="color:#75715e"># 创建用户</span>
+su -l lilei <span style="color:#75715e"># 切换用户</span>
+sudo passwd shiyanlou <span style="color:#75715e"># 设置shiyanlou用户密码</span>
+</code></pre></div><h5 id="用户组">用户组</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 查看自己属于哪些用户组</span>
+groups shiyanlou <span style="color:#75715e"># 使用groups命令</span>
+cat /etc/group | grep -E <span style="color:#e6db74">&#34;shiyanlou&#34;</span>
+
+<span style="color:#75715e"># 为用户添加用户组，主要是用来添加sudo权限</span>
+sudo usermod -G sudo lilei
+
+<span style="color:#75715e"># 删除用户</span>
+sudo deluser lilei --remove-home
+</code></pre></div><h4 id="linux文件权限">Linux文件权限</h4>
+<h5 id="查看文件权限">查看文件权限</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ls -l <span style="color:#75715e"># 使用较长格式列出文件，ll是ls -l的别名</span>
+ls -lh <span style="color:#75715e"># 更直观地查看文件的大小</span>
+ls -a <span style="color:#75715e"># 查看隐藏文件</span>
+</code></pre></div><ul>
+<li>文件类型和权限  链接数  所有者  所属用户组  文件大小  最后修改时间  文件名
+<ul>
+<li>文件类型和权限：拥有者权限  所属用户组权限  其他用户权限
+<ul>
+<li>变更文件所有者<code>sudo chown 文件名 用户名</code></li>
+<li>修改文件权限<code>chmod 777 文件名</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="linux目录结构及文件基本操作">Linux目录结构及文件基本操作</h3>
+<ul>
+<li>FHS（Filesystem Hierarchy Standard）标准，文件系统层次结构标准
+<ul>
+<li>Linux是以树形目录结构的形式来构建整个系统的，可以理解为树形目录是一个用户可操作系统的骨架。</li>
+<li>FHS定义了系统中每个区域的用途、所需要的最小构成的文件和目录，同时还给出了例外处理与矛盾处理。</li>
+</ul>
+</li>
+</ul>
+<h5 id="linux文件的基本操作">Linux文件的基本操作</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">touch 文件名 <span style="color:#75715e"># 创建文件</span>
+mkdir 目录名 <span style="color:#75715e"># 创建目录</span>
+
+tail -n <span style="color:#ae81ff">1</span> /etc/passwd <span style="color:#75715e"># 查看passwd文件最后一行</span>
+file /bin/ls <span style="color:#75715e"># 查看文件的类型</span>
+</code></pre></div><h5 id="vim编辑文件">vim编辑文件</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vimtutor <span style="color:#75715e"># linux内部的vim学习教程</span>
+</code></pre></div><table>
+<thead>
+<tr>
+<th align="center">输入</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"></td>
+<td align="center">删除字符</td>
+</tr>
+<tr>
+<td align="center">wd</td>
+<td align="center">从当前光标删除至下一个单词</td>
+</tr>
+<tr>
+<td align="center">d$</td>
+<td align="center">从光标处删除至当前行尾部</td>
+</tr>
+<tr>
+<td align="center">dd</td>
+<td align="center">删除整一个当前行</td>
+</tr>
+<tr>
+<td align="center">p</td>
+<td align="center">输入p将最后一次删除的内容置入光标之后</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">移动光标到行首</td>
+</tr>
+<tr>
+<td align="center">r</td>
+<td align="center">输入r和一个字符替换光标所在位置的字符</td>
+</tr>
+<tr>
+<td align="center">cw</td>
+<td align="center">替换当前光标到单词的末尾的内容</td>
+</tr>
+<tr>
+<td align="center">c$</td>
+<td align="center">替换当前光标到行末的内容</td>
+</tr>
+<tr>
+<td align="center">ctrl+g</td>
+<td align="center">实现当前编辑文件中当前光标所在位置以及文件状态信息</td>
+</tr>
+<tr>
+<td align="center">G</td>
+<td align="center">使当前光标直接跳转到文件最后一行</td>
+</tr>
+<tr>
+<td align="center">gg</td>
+<td align="center">使当前光标直接跳转到文件第一行</td>
+</tr>
+<tr>
+<td align="center">行号+G</td>
+<td align="center">光标跳转到行号位置</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>
